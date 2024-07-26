@@ -1,0 +1,48 @@
+{
+  "name": "cm_le_printemps_backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "API backend du site du cabinet medical le printemps qui me permettra de gerer les differentes operations a effectuer sur le site en ce qui concerne les prises de rendez-vous en ligne",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "start"
+  },
+  "keywords": [
+    "cabinet",
+    "medical",
+    "printemps",
+    "sante",
+    "health",
+    "blood",
+    "sang",
+    "patient",
+    "hospital",
+    "hopital"
+  ],
+  "author": "@Dev_Arno",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "i": "^0.3.7",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.7.0",
+    "mongoose": "^8.4.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.4",
+    "npm": "^10.8.1",
+    "supertest": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6"
+  }
+}
