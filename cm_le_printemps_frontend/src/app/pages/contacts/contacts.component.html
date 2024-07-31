@@ -1,0 +1,201 @@
+<section class="min-h-screen w-screen transition-all ease-in-out duration-1000">
+    <header class="w-full h-screen bg-image ">
+        <div class="h-full w-full px-12 bg-black/75 text-8xl max-md:text-6xl max-sm:text-4xl text-center  font-black flex flex-col justify-center items-center gap-2">
+            <span class="">Prenez Rendez-vous</span>
+        </div>
+    </header>
+    
+    <h1 class="pt-24 text-blak text-center text-4xl max-md:text-2xl max-sm:text-xl mb-6">Prennez <span class="text-green-600 italic font-semibold">Rendez-vous</span> Aujourd'hui</h1>
+
+    <main class="w-full relative h-screen max-sm:h-max px-12 mb-32 flex  max-sm:block justify-start items-center max-sm:py-28">
+        <div class="h-full max-sm:h-screen w-2/3 max-sm:w-full overflow-hidden rounded">
+            <img src="assets/images/84f797a529cdd39e369543d2dd6beb88.png" alt="image formulaire de rendez-vous" class="w-full h-full object-cover object-left-bottom max-sm:object-center max-sm:object-cover">
+        </div>
+        <form class="p-12 max-md:px-6 absolute max-sm:h-auto mr-12 max-sm:top-0 right-0 h-5/6 w-2/3 max-sm:w-80 rounded border-2 border-blue-600 bg-blue-600/30 backdrop-blur-lg">
+            <p class="text-white text-lg font-bold col-span-4 text-center mb-6">
+                Veillez remplir ce formulaire pour prendre un Rendez-vous avec notre Equipe
+            </p>
+            <div class="w-full h-full grid grid-cols-4 max-sm:grid-cols-2 gap-3 content-start text-sm">
+
+                <input type="text" placeholder="Nom du patient" class="text-gray-100 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2">
+
+                <input type="text" placeholder="Prenom du patient" class="text-gray-200 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2">
+
+                <div class="capitalize text-center flex items-center">
+                    <input
+                    type="radio"
+                    name="age"
+                    class="sr-only"
+                    id="bebe"
+                    [checked]="selectedAge === 'bebe'"
+                    (change)="selectAge('bebe')"
+                    checked/>
+                    <label
+                    for="bebe"
+                    class="w-full bg-blue-600 hover:bg-blue-900 text-gray-200 hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-900] = "selectedAge === 'bebe'" [class.text-white] = "selectedAge === 'bebe'" [class.font-bold] = "selectedAge === 'bebe'">
+                    bebe
+                    </label>
+                </div>
+                
+                <div class="capitalize text-center flex items-center">
+                    <input
+                        type="radio"
+                        name="age"
+                        class="sr-only"
+                        id="enfant"
+                        [checked]="selectedAge === 'enfant'"
+                        (change)="selectAge('enfant')"
+                    />
+                    <label
+                    for="enfant"
+                    class="w-full bg-blue-600 hover:bg-blue-900 text-gray-200 hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-900] = "selectedAge === 'enfant'" [class.text-white] = "selectedAge === 'enfant'" [class.font-bold] = "selectedAge === 'enfant'">
+                    enfant
+                    </label>
+                </div>
+                
+                <div class="capitalize text-center flex items-center">
+                    <input
+                        type="radio"
+                        name="age"
+                        class="sr-only"
+                        id="adolescent"
+                        [checked]="selectedAge === 'adolescent'"
+                        (change)="selectAge('adolescent')"
+                    />
+                    <label
+                    for="adolescent"
+                    class="w-full bg-blue-600 hover:bg-blue-900 text-gray-200 hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-900] = "selectedAge === 'adolescent'" [class.text-white] = "selectedAge === 'adolescent'" [class.font-bold] = "selectedAge === 'adolescent'">
+                    adolescent
+                    </label>
+                </div>
+                
+                <div class="capitalize text-center flex items-center">
+                    <input
+                        type="radio"
+                        name="age"
+                        class="sr-only"
+                        id="adulte"
+                        [checked]="selectedAge === 'adulte'"
+                        (change)="selectAge('adulte')"
+                    />
+                    <label
+                    for="adulte"
+                    class="w-full bg-blue-600 hover:bg-blue-900 text-gray-200 hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-900] = "selectedAge === 'adulte'" [class.text-white] = "selectedAge === 'adulte'" [class.font-bold] = "selectedAge === 'adulte'">
+                    adulte
+                    </label>
+                </div>
+
+                <div class="relative inline-block col-span-2 rounded overflow-x-hidden">
+                    <select
+                      class="appearance-none bg-blue-600/30 border-b border-gray-300 py-3 px-4 pr-8 w-full focus:outline-none focus:border-blue-500 text-white"
+                      [(ngModel)]="selectedService" [ngModelOptions]="{standalone: true}">
+                      <option value="" disabled  class="text-gray-200 text-lg italic">
+                        <div class="w-full">
+                          Veillez selectionner un service
+                        </div> 
+                      </option>
+                      <option
+                        *ngFor="let service of services"
+                        [value]="service._id"
+                        class="py-3 text-lg"
+                      >
+                        <div class="w-full py-3 text-blue-600 bg-red-500 hover:text-white hover:bg-blue-600">
+                          {{ service.label }}
+                        </div> 
+                      </option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
+                </div>
+
+                <div class="capitalize text-center flex items-center">
+                  <input
+                  type="radio"
+                  name="sexe"
+                  class="sr-only"
+                  id="masculin"
+                  [checked]="selectedSexe === 'masculin'"
+                  (change)="selectSexe('masculin')"
+                  checked/>
+                  <label
+                  for="masculin"
+                  class="w-full bg-blue-600 hover:bg-blue-900 text-gray-200 hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-900] = "selectedSexe === 'masculin'" [class.text-white] = "selectedSexe === 'masculin'" [class.font-bold] = "selectedSexe === 'masculin'">
+                  masculin
+                  </label>
+                </div>
+            
+                <div class="capitalize text-center flex items-center">
+                  <input
+                      type="radio"
+                      name="sexe"
+                      class="sr-only"
+                      id="feminin"
+                      [checked]="selectedSexe === 'feminin'"
+                      (change)="selectSexe('feminin')"
+                  />
+                  <label
+                  for="feminin"
+                  class="w-full bg-blue-600 hover:bg-blue-900 text-gray-200 hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-900] = "selectedSexe === 'feminin'" [class.text-white] = "selectedSexe === 'feminin'" [class.font-bold] = "selectedSexe === 'feminin'">
+                  feminin
+                  </label>
+                </div>
+
+                <textarea type="text" placeholder="Description des symptomes" class="text-gray-100 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2 row-span-2 resize-none" rows="5"></textarea>
+
+                <input type="date" placeholder="Date du rendez-vous" class="text-gray-100 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2 self-start" [min]="today" [(ngModel)]="selectedDate"  [ngModelOptions]="{standalone: true}">
+                <br>
+                <input type="submit" placeholder="date du rendez-vous" class="appearance-none  text-gray-100 py-3 bg-green-600 hover:bg-transparent hover:backdrop-blur-md border-2 border-green-600 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:outline-none rounded col-span-1 self-end">
+            </div>
+
+        </form>
+    </main>
+
+    <!-- my-radio-component.component.html -->
+<!-- <div class="flex items-center">
+    <input
+      type="radio"
+      name="myRadio"
+      class="sr-only"
+      id="radio1"
+      [checked]="selectedOption === 'option1'"
+      (change)="selectOption('option1')"
+      checked/>
+    <label
+      for="radio1"
+      class="bg-blue-600 text-white px-3 py-2 rounded-md cursor-pointer" [class.bg-green-600] = "selectedOption === 'option1'">
+      Option 1
+    </label>
+  </div>
+  
+  <div class="flex items-center">
+    <input
+      type="radio"
+      name="myRadio"
+      class="sr-only"
+      id="radio2"
+      [checked]="selectedOption === 'option2'"
+      (change)="selectOption('option2')"
+    />
+    <label
+      for="radio2"
+      class="bg-blue-600 text-white px-3 py-2 rounded-md cursor-pointer" [class.bg-green-600] = "selectedOption === 'option2'">
+      Option 2
+    </label>
+  </div> -->
+
+  <!-- my-component.component.html -->
+<!-- <div class="relative inline-block w-48">
+    <select
+      class="appearance-none bg-red-500 border-b border-gray-300 py-2 px-4 pr-8 w-full focus:outline-none focus:border-blue-500 text-white"
+      [(ngModel)]="selectedOption">
+      <option value="" disabled selected class="text-gray-200 text-lg">selectionnez</option>
+      <option
+        *ngFor="let option of options"
+        [value]="option.value"
+        class="bg-white py-4 px-4 border-b border-b-gray-300 hover:bg-green-600 hover:text-white"
+      >
+        {{ option.label }}
+      </option>
+    </select>
+    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
+  </div> -->
+</section>

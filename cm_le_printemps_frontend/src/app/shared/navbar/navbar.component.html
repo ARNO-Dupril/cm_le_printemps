@@ -1,11 +1,11 @@
-<section class="w-screen h-14 mb-1 bg-blue-600/15">
-    <nav class="fixed top-0 left-0 z-10 flex flex-row items-center w-full h-14 px-12 py-1 bg-transparent backdrop-blur-xl max-sm:bg-blue-600/15">
+<section class="w-screen h-14 fixed top-0 left-0 z-10 bg-blue-600/15">
+    <nav class="flex flex-row items-center w-full h-14 px-12 py-1 bg-transparent backdrop-blur-xl max-sm:bg-blue-600/15">
         <div class="flex flex-row items-center justify-between w-full h-full">
             <div class="h-full overflow-hidden w-1/2">
-                <div class="w-full h-full">
+                <a [routerLink]="['/']" class="w-full h-full" (click)="closeMenu()">
                     <img src="assets/logo-texte.png" alt="logo" class="h-full">
                     <!-- <span class="text-xl font-bold text-zinc-100">LOGO</span> -->
-                </div>
+                </a>
             </div>
             <div class="text-end">
                 <div class="fixed flex items-center justify-center flex-grow-0 flex-shrink-0 w-10 h-10 sm:hidden max-sm:visible top-2 right-8" (click)="openMenu()">
@@ -14,37 +14,37 @@
                 <div class="transition ease-in-out duration-3000 flex max-sm:block justify-between items-center flex-row flex-grow flex-shrink gap-6 max-sm:bg-white max-sm:w-80 max-sm:h-screen max-sm:backdrop-blur-xl max-sm:fixed max-sm:top-14 max-sm:-right-80" [class.max-sm:right-0] = "menuVariable" >
                     <ul class="flex flex-row items-center justify-end text-sm max-sm:flex-col max-sm:justify-start max-sm:items-start text-start gap-x-3 text-white max-sm:text-blue-600 max-sm:bg-blue-600/30 max-sm:h-3/4">
                         <li class="flex flex-col group gap-y-1 max-sm:w-full max-sm:px-6 max-sm:py-2">
-                            <a class="cursor-default sm:group-hover:text-blue-600 group-active:font-semibold sm:group-active:text-blue-600 ">
+                            <a [routerLink]="['/']" routerLinkActive="text-blue-600 font-bold" [routerLinkActiveOptions]="{exact: true}" class="cursor-default sm:group-hover:text-blue-600 group-active:font-semibold sm:group-active:text-blue-600 " (click)="closeMenu()">
                                 Home
                             </a>
-                            <span class="w-0 h-1 bg-blue-600 transition-all duration-300 sm:group-hover:w-full rounded-md group-active:w-full"></span> 
+                            <span class="w-0 h-1 bg-blue-600 transition-all duration-300 sm:group-hover:w-full rounded-md" [class.w-full]="router.isActive('/', true)"></span> 
                         </li>
-                        <li class="flex flex-col group gap-y-1 max-sm:w-full max-sm:px-6 max-sm:py-2">
-                            <a class="cursor-default sm:group-hover:text-blue-600 group-active:font-semibold sm:group-active:text-blue-600">
+                        <li class="flex flex-col group gap-y-1 max-sm:w-full max-sm:px-6 max-sm:py-2" (click)="closeMenu()">
+                            <a  [routerLink]="['/services']" routerLinkActive="text-blue-600 font-bold" class="cursor-default sm:group-hover:text-blue-600 group-active:font-semibold sm:group-active:text-blue-600">
                                 Services
                             </a> 
-                            <span class="w-0 h-1 bg-blue-600 transition-all duration-300 sm:group-hover:w-full rounded-md group-active:w-full"></span> 
+                            <span class="w-0 h-1 bg-blue-600 transition-all duration-300 sm:group-hover:w-full rounded-md group-active:w-full" [class.w-full]="router.isActive('/services', false)"></span> 
                         </li>
-                        <li class="flex flex-col group gap-y-1 max-sm:w-full max-sm:px-6 max-sm:py-2">
-                            <a class="cursor-default sm:group-hover:text-blue-600 group-active:font-semibold sm:group-active:text-blue-600">
+                        <li class="flex flex-col group gap-y-1 max-sm:w-full max-sm:px-6 max-sm:py-2" (click)="closeMenu()">
+                            <a  [routerLink]="['/about']" routerLinkActive="text-blue-600 font-bold" class="cursor-default sm:group-hover:text-blue-600 group-active:font-semibold sm:group-active:text-blue-600">
                                 About
                             </a> 
-                            <span class="w-0 h-1 bg-blue-600 transition-all duration-300 sm:group-hover:w-full rounded-md group-active:w-full"></span> 
+                            <span class="w-0 h-1 bg-blue-600 transition-all duration-300 sm:group-hover:w-full rounded-md group-active:w-full" [class.w-full]="router.isActive('/about', false)"></span> 
                         </li>
-                        <li class="flex flex-col group gap-y-1 max-sm:w-full max-sm:px-6 max-sm:py-2">
-                            <a class="cursor-default sm:group-hover:text-blue-600 group-active:font-semibold sm:group-active:text-blue-600">
+                        <li class="flex flex-col group gap-y-1 max-sm:w-full max-sm:px-6 max-sm:py-2" (click)="closeMenu()">
+                            <a  [routerLink]="['/contacts']" routerLinkActive="text-blue-600 font-bold" class="cursor-default sm:group-hover:text-blue-600 group-active:font-semibold sm:group-active:text-blue-600">
                                 Contacts
                             </a> 
-                            <span class="w-0 h-1 bg-blue-600 transition-all duration-300 sm:group-hover:w-full rounded-md group-active:w-full"></span> 
+                            <span class="w-0 h-1 bg-blue-600 transition-all duration-300 sm:group-hover:w-full rounded-md group-active:w-full" [class.w-full]="router.isActive('/contacts', false)"></span> 
                         </li>
                     </ul>
                     
                     <ul class="flex flex-row gap-0 justify-start text-white text-sm max-sm:bg-blue-600/30 max-sm:pt-6 max-sm:h-1/4 max-sm:px-6">
                         <li class="group text-blue-600">
-                            <a href="#" class="bg-transparent border-2 border-transparent rounded-sm rounded-r-none px-3 py-2 group-hover:border-blue-600">login</a>
+                            <a [routerLink]="['/login']" routerLinkActive="border-2 border-blue-600 font-bold" class="bg-transparent border-2 border-transparent rounded-sm rounded-r-none px-3 py-2 group-hover:border-blue-600" (click)="closeMenu()">login</a>
                         </li>
                         <li class="group text-white">
-                            <a href="#" class="bg-blue-600 border-2 group-hover:bg-transparent group-hover:text-blue-600 rounded-sm rounded-l-none px-3 py-2 border-blue-600">signin</a>
+                            <a [routerLink]="['/signup']" routerLinkActive="bg-transparent font-bold text-blue-600" class="bg-blue-600 border-2 group-hover:bg-transparent group-hover:text-blue-600 rounded-sm rounded-l-none px-3 py-2 border-blue-600" (click)="closeMenu()">signup</a>
                         </li>
                     </ul>
                 </div>

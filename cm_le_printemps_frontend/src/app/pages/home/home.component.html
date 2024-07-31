@@ -1,0 +1,202 @@
+<section class="min-h-screen w-screen transition-all ease-in-out duration-1000">
+    <header class="w-full h-screen bg-image ">
+        <div class="h-full w-full px-12 text-6xl max-md:text-4xl font-black text-black flex flex-col justify-center items-start gap-2">
+            <span class="text-blue-600">Prennez</span>
+            <span class="text-green-600">Rendez-vous</span>
+            <span class="text-blue-600">Sans vous deplacer</span>
+            <a [routerLink]="['/contacts']" class="text-sm text-white font-normal bg-green-600 hover:bg-green-700 px-3 py-2 rounded mt-5">Demander un RDV</a>
+        </div>
+    </header>
+    <main class="w-full h-auto py-24 px-12">
+        <h1 class="text-blak text-center text-4xl max-md:text-2xl max-sm:text-xl mb-12">Comment <span class="text-green-600 italic font-semibold">demander un rendez-vous</span></h1>
+        <div class="grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-3 mb-24">
+            <div class="h-16 bg-blue-600 p-3 text-lg max-md:text-sm max-sm:text-xs flex items-center rounded-lg hover:bg-blue-700">
+                <p class="h-full w-[40px] bg-white text-blue-600 text-3xl font-bold rounded-full flex justify-center items-center mr-2">1</p>
+                <p class="text-white">Se connecter à son compte </p>
+            </div>
+            <div class="h-16 bg-blue-600 p-3 text-lg max-md:text-sm max-sm:text-xs flex items-center rounded-lg hover:bg-blue-700">
+                <p class="h-full w-[40px] bg-white text-blue-600 text-3xl font-bold rounded-full flex justify-center items-center mr-2">2</p>
+                <p class="text-white">Remplir le formulaire</p>
+            </div>
+            <div class="h-16 bg-blue-600 p-3 text-lg max-md:text-sm max-sm:text-xs flex items-center rounded-lg hover:bg-blue-700 max-md:col-span-2 max-sm:col-span-1">
+                <p class="h-full w-[40px] bg-white text-blue-600 text-3xl font-bold rounded-full flex justify-center items-center mr-2">3</p>
+                <p class="text-white">Soumettre le formulaire</p>
+            </div>
+        </div>
+        <h1 class="text-blak text-center text-4xl max-md:text-2xl max-sm:text-xl mb-12">Nos <span class="text-green-600 italic font-semibold">services</span> Offerts</h1>
+        <div class="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 gap-3">
+            <!-- <div class="" *ngfor>
+                <div class="" *ngif> -->
+                    <div class="p-1 rounded hover:shadow-lg shadow-blue-600 border flex flex-col flex-grow">
+                        <div class="w-full rounded h-48 max-md:h-40 overflow-hidden">
+                            <img src="assets/images/b5fc40d9a9f57e150495f11ac152c5d5.jpg" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-sm max-md:text-lg text-justify">
+                            <p class="text-green-600 font-semibold my-2">Programme de vaccination</p>
+                            <p class="text-gray-600">Protection contre les infections courantes grâce à nos vaccinations.</p>
+                        </div>
+                    </div>
+                    <div class="p-1 rounded hover:shadow-lg shadow-blue-600 border flex flex-col flex-grow">
+                        <div class="w-full rounded h-48 max-md:h-40 overflow-hidden">
+                            <img src="assets/images/a6896784bc341baee8c44a375bd4e6f2.jpg" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-sm max-md:text-lg text-justify">
+                            <p class="text-green-600 font-semibold my-2">Vaccin pour enfant</p>
+                            <p class="text-gray-600">Protégez votre famille grâce à notre programme de vaccination.</p>
+                        </div>
+                    </div>
+                    <div class="p-1 rounded hover:shadow-lg shadow-blue-600 border flex flex-col flex-grow">
+                        <div class="w-full rounded h-48 max-md:h-40 overflow-hidden">
+                            <img src="assets/images/0f62f1246f6cba360e54d44cc0317c53.jpg" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-sm max-md:text-lg text-justify">
+                            <p class="text-green-600 font-semibold my-2">Suivis de grossesse</p>
+                            <p class="text-gray-600">Accompagnement médical complet pendant votre grossesse.</p>
+                        </div>
+                    </div>
+                    <div class="p-1 rounded hover:shadow-lg shadow-blue-600 border flex flex-col flex-grow">
+                        <div class="w-full rounded h-48 max-md:h-40 overflow-hidden">
+                            <img src="assets/images/88c52a5aad21cad258e2f32513a82938.jpg" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-sm max-md:text-lg text-justify">
+                            <p class="text-green-600 font-semibold my-2">Bilan de santé complet</p>
+                            <p class="text-gray-600">Évaluation approfondie de votre état de santé global.</p>
+                        </div>
+                    </div>
+                <!-- </div>
+            </div> -->
+        </div>
+        <div class="mt-12 mb-24">
+            <a [routerLink]="['/services']" class="text-sm text-white font-normal bg-green-600 hover:bg-green-700 px-3 py-2 rounded ">Voir plus <span class="font-bold">....</span></a>
+        </div>
+        <div class="grid grid-cols-2 max-md:grid-cols-1  gap-5 max-md:gap-12">
+            <div class="grid grid-cols-3 max-sm:grid-cols-2 gap-3">
+                <h1 class="text-left max-md:text-center text-4xl max-md:text-2xl max-sm:text-xl mb-12 col-span-3 max-sm:col-span-2">Nos <span class="text-green-600 italic font-semibold">specificités</span></h1>
+
+                <div class="bg-green-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-green-600/50 text-green-600 max-sm:col-span-2">
+                    <span class="bi bi-heart-fill text-lg"></span>
+                    <p class="font-bold text-nowrap">Orientation patient</p>
+                    <p class="text-gray-500">Votre bien-être et votre satisfaction sont au cœur de nos priorités.</p>
+                </div>
+                <div class="bg-green-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-green-600/50 text-green-600 col-span-2 max-md:col-span-1">
+                    <span class="bi bi-lock-fill text-lg"></span>
+                    <p class="font-bold text-nowrap">Confidentialité et respect</p>
+                    <p class="text-gray-500">Votre santé et vos informations personnelles sont protégées.</p>
+                </div>
+                <div class="bg-green-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-green-600/50 text-green-600">
+                    <span class="bi bi-clock-fill text-lg"></span>
+                    <p class="font-bold text-nowrap">Réactivité et disponibilité</p>
+                    <p class="text-gray-500">Prise en charge rapide de vos urgences et rendez-vous flexibles.</p>
+                </div>
+                <div class="bg-green-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-green-600/50 text-green-600 max-md:col-span-3 max-sm:col-span-2">
+                    <span class="bi bi-award-fill text-lg"></span>
+                    <p class="font-bold text-nowrap">Expertise médicale reconnue</p>
+                    <p class="text-gray-500">Une équipe de professionnels de santé hautement qualifiés.</p>
+                </div>
+                <div class="bg-green-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-green-600/50 text-green-600">
+                    <span class="bi bi-shield-fill-check text-lg"></span>
+                    <p class="font-bold text-nowrap">Qualité des soins certifiée</p>
+                    <p class="text-gray-500">Démarche d'amélioration continue de la qualité et de la sécurité.</p>
+                </div>
+                <div class="bg-green-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-green-600/50 text-green-600 col-span-2 max-md:col-span-1">
+                    <span class="bi bi-person-circle text-lg"></span>
+                    <p class="font-bold text-nowrap">Approche personnalisée</p>
+                    <p class="text-gray-500">Suivi médical sur-mesure adapté à vos besoins spécifiques.</p>
+                </div>
+                <div class="bg-green-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-green-600/50 text-green-600 max-sm:col-span-2">
+                    <span class="bi bi-cpu-fill text-lg"></span>
+                    <p class="font-bold text-nowrap">Technologie de pointe</p>
+                    <p class="text-gray-500">Équipements médicaux les plus avancés pour des soins optimaux.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 max-sm:grid-cols-2 gap-3">
+                <h1 class="text-right max-md:text-center text-4xl max-md:text-2xl max-sm:text-xl mb-12 col-span-3 max-sm:col-span-2">Nos <span class="text-green-600 italic font-semibold">attouts</span></h1>
+                
+                <div class="bg-blue-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-blue-600/50 text-blue-600 col-span-2  max-md:col-span-1 max-sm:col-span-2">
+                    <span class="bi bi-peace-fill text-lg"></span>
+                    <p class="font-bold text-nowrap">Tranquillité d'esprit</p>
+                    <p class="text-gray-500">Profitez d'un accompagnement de confiance pour votre bien-être.</p>
+                </div>
+                <div class="bg-blue-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-blue-600/50 text-blue-600">
+                    <span class="bi bi-shield-fill-plus text-lg"></span>
+                    <p class="font-bold text-nowrap">Prévention efficace</p>
+                    <p class="text-gray-500">Dépistages réguliers pour détecter et prévenir les problèmes de santé.</p>
+                </div>
+                <div class="bg-blue-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-blue-600/50 text-blue-600">
+                    <span class="bi bi-shield-lock-fill text-lg"></span>
+                    <p class="font-bold text-nowrap">Securité des données</p>
+                    <p class="text-gray-500">Vos informations personnelles sont protégées avec soin.</p>
+                </div>
+                <div class="bg-blue-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-blue-600/50 text-blue-600 max-md:col-span-3 max-sm:col-span-2">
+                    <span class="bi bi-people-fill text-lg"></span>
+                    <p class="font-bold text-nowrap">Équipe attentionnée</p>
+                    <p class="text-gray-500">Un personnel médical à votre écoute et bienveillant.</p>
+                </div>
+                <div class="bg-blue-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-blue-600/50 text-blue-600">
+                    <span class="bi bi-stopwatch-fill text-lg"></span>
+                    <p class="font-bold text-nowrap">Gain de temps</p>
+                    <p class="text-gray-500">Des processus optimisés pour vous faire gagner du temps.</p>
+                </div>
+                <div class="bg-blue-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-blue-600/50 text-blue-600">
+                    <span class="bi bi-calendar3-week-fill text-lg"></span>
+                    <p class="font-bold text-nowrap">Flexibilité des rdv</p>
+                    <p class="text-gray-500">Planifiez facilement vos rendez-vous à votre convenance.</p>
+                </div>
+                <div class="bg-blue-600/15 overflow-hidden rounded flex flex-col justify-start p-1 border-2 border-blue-600/50 text-blue-600 col-span-2 max-md:col-span-1 max-sm:col-span-2">
+                    <span class="bi bi-cash-stack text-lg"></span>
+                    <p class="font-bold text-nowrap">Économies à long terme</p>
+                    <p class="text-gray-500">Des soins de qualité qui vous font faire des économies.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <main class="px-12 py-6 bg-green-600 mb-24 grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 gap-3 text-center max-md:gap-y-10">
+        <div class="text-gray-300 flex justify-start items-center flex-col gap-3">
+            <span class="text-5xl font-bold">96%</span>
+            <span class="text-xl">Patients satisfaits</span>
+        </div>
+        <div class="text-gray-300 flex justify-start items-center flex-col gap-3">
+            <span class="text-5xl font-bold">4,9/5</span>
+            <span class="text-xl">Excellente experience patient</span>
+        </div>
+        <div class="text-gray-300 flex justify-start items-center flex-col gap-3">
+            <span class="text-5xl font-bold">+500</span>
+            <span class="text-xl">Patients soignés avec succes</span>
+        </div>
+        <div class="text-gray-300 flex justify-start items-center flex-col gap-3">
+            <span class="text-5xl font-bold">-31min</span>
+            <span class="text-xl">Delais de prise en charge</span>
+        </div>
+    </main>
+    <main class="px-12 w-full mb-24 pb-24">
+        <h1 class="text-blak text-center text-4xl max-md:text-2xl max-sm:text-xl mb-12">Comment <span class="text-green-600 italic font-semibold">nous contacter</span></h1>
+
+        <div class="grid grid-cols-2 max-md:grid-cols-1 gap-3 max-md:gap-y-12 max-md:text-justify">
+            <div class="">
+                <h1 class="text-xl mb-5">
+                    Vous avez des questions ou vous souhaitez prendre rendez-vous? 
+                </h1>
+                <p class="text-gray-600">
+                    Remplissez simplement le formulaire ci-contre avec vos coordonnées et votre demande, et l'un de nos conseillers vous recontactera rapidement. Nous serons ravis de vous accueillir et de vous guider dans vos démarches.
+                        <br>
+                        <br>
+                    Au Cabinet Medical le Printemps, nous mettons un point d'honneur à offrir des soins de santé de haute qualité dans un environnement accueillant et bienveillant.
+                </p>
+                <p class="italic text-blue-600 font-semibold text-sm mt-5">
+                    "Votre santé est notre priorité !"
+                </p>
+            </div>
+            <form class="grid grid-cols-2 gap-2 max-sm:grid-cols-1">
+                <input type="text" placeholder="Votre nom" class="placeholder:text-sm max-md:placeholder:text-xs rounded-sm px-3 py-2 bg-gray-100 border-b-2 hover:border-blue-600 focus:border-blue-600 focus:outline-none text-gray-800">
+                <input type="text" placeholder="Theme" class="placeholder:text-sm max-md:placeholder:text-xs rounded-sm px-3 py-2 bg-gray-100 border-b-2 hover:border-blue-600 focus:border-blue-600 focus:outline-none text-gray-800">
+                <input type="text" placeholder="Votre email" class="placeholder:text-sm max-md:placeholder:text-xs rounded-sm px-3 py-2 bg-gray-100 border-b-2 hover:border-blue-600 focus:border-blue-600 focus:outline-none text-gray-800 col-span-2 max-sm:col-span-1">
+                <textarea type="text" placeholder="Votre message" class="placeholder:text-sm max-md:placeholder:text-xs rounded-sm px-3 py-2 bg-gray-100 border-b-2 hover:border-blue-600 focus:border-blue-600 focus:outline-none text-gray-800 resize-none col-span-2 max-sm:col-span-1 h-32"></textarea>
+                <div class="col-span-2 max-sm:col-span-1 flex items-center justify-end">
+                    <input type="submit" value="Envoyer" class="py-2 px-8 bg-green-600 hover:bg-green-700 text-white font-semibold rounded">
+                </div>
+            </form>
+            
+        </div>
+    </main>
+</section>

@@ -1,1 +1,19 @@
-<p>notfound works!</p>
+<section class="h-screen w-screen relative bg-blue-950 text-white text-center">
+    <!-- <img src="assets/images/8fdcb980f7794231b639905bdb64f3e2.jpg" alt="background" class="h-full w-full object-fill animate-pulse delay-300"> -->
+    <img src="assets/images/c93cc86bbef103e2e427318930bd62e5.jpg" alt="background" class="h-full w-full object-top object-cover max-md:object-center ">
+    <div class="h-full w-full absolute top-0 left-0 flex justify-center items-center flex-col text-9xl transition-all ease-in-out duration-1000 translate-x-0">
+        <p class="font-black text-blue-100 mb-4">
+            <span>4</span>
+            <!-- <span>0</span> -->
+            <span><img src="assets/logo_simple.png" alt="" class="inline h-32 mx-4"></span>
+            <span>4</span>
+        </p>
+        <p class="text-2xl text-white bg-gradient-to-t from-blue-900 from-40% to-40%">
+            Page Introuvable 
+        </p>
+        <p class="text-lg max-sm:w-1/2 max-md:w-3/4">
+            Nous sommes desolé mais la page que vous recherchez est Introuvable
+        </p>
+        <a [routerLink]="['/']" class="group text-lg mt-10 p-2 rounded-md bg-green-600 hover:bg-green-700"><span class="bi bi-arrow-left text-white animate-ping group-hover:animate-none mr-2 text-xl"></span> Revenir à l'acceuil</a>
+    </div>
+</section>

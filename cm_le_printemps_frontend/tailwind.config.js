@@ -12,12 +12,8 @@ module.exports = {
         '4000': '4000ms',
       },
       animation: {
-      'hamburger': '3s ease-in-out'
+        'hamburger': '3s ease-in-out'
       },
-      backgroundImage: {
-        'vitreverte': "url('/src/assets/vitre-verte.jpg')",
-        'paille': "url('/src/assets/roman-petrov-NnGOHYiKm1o-unsplash.jpg')",
-      }
     },
   },
   plugins: [],

@@ -42,16 +42,16 @@
         </div>
         <div class="col-span-1 max-md:col-span-2 max-sm:col-span-4 items-start">
             <p class="mb-4 font-semibold">LIENS RAPIDES</p>
-            <a href="#" class="block text-sm text-gray-300 hover:text-white">
+            <a [routerLink]="['/']" routerLinkActive="text-white font-bold" [routerLinkActiveOptions]="{exact: true}" class="block text-sm text-gray-300 hover:text-white">
                 Home
             </a>
-            <a href="#" class="block text-sm text-gray-300 hover:text-white">
+            <a [routerLink]="['/services']" routerLinkActive="text-white font-bold" class="block text-sm text-gray-300 hover:text-white">
                 Services
             </a>
-            <a href="#" class="block text-sm text-gray-300 hover:text-white">
+            <a [routerLink]="['/about']" routerLinkActive="text-white font-bold" class="block text-sm text-gray-300 hover:text-white">
                 About
             </a>
-            <a href="#" class="block text-sm text-gray-300 hover:text-white">
+            <a [routerLink]="['/contacts']" routerLinkActive="text-white font-bold" class="block text-sm text-gray-300 hover:text-white">
                 Contacts
             </a>
             <div class="w-full flex flex-row flex-nowrap mt-3">

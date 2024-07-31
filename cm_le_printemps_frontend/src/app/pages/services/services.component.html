@@ -1,0 +1,40 @@
+<section class="min-h-screen w-screen transition-all ease-in-out duration-1000">
+    <header class="w-full h-screen bg-image reverse">
+        <div class="h-full w-full px-12 bg-black/75 text-8xl max-md:text-6xl max-sm:text-4xl text-center  font-black flex flex-col justify-center items-center gap-2">
+            <span class="">Nos services de qualité a votre disposition</span>
+        </div>
+    </header>
+    <div class="w-full px-12 flex flex-col items-center py-24">
+        
+        <h1 class="text-blak text-center text-4xl max-md:text-2xl max-sm:text-xl mb-12">Nos <span class="text-green-600 italic font-semibold">Services</span> Offerts</h1>
+
+        <div class="item-container w-full grid grid-cols-2 max-sm:grid-cols-1 gap-5 mb-5">
+          <div *ngFor="let item of itemsToDisplay" class="item p-1 bg-gray-400/5 rounded hover:shadow-md text-justify">
+            <div class="w-full h-60 rounded overflow-hidden">
+                <img src="assets/images/a6896784bc341baee8c44a375bd4e6f2.jpg" alt="{{item}}" class="w-full h-full object-cover">
+            </div>
+            <p class="text-gray-600 text-lg font-bold py-2">Programme de vaccination</p>
+            <p class="text-sm">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque eos repellendus animi error aliquid? Laboriosam ratione excepturi eaque voluptatibus possimus, ex unde odio quam? Non enim laudantium pariatur nostrum perspiciatis, veritatis at amet magni architecto, voluptatibus itaque atque corrupti consequuntur aliquam voluptatem nisi suscipit quos doloremque sunt iure dolorum. Architecto?
+            </p>
+          </div>
+        </div>
+        <div *ngIf="items.length > itemsPerPage" class="pagination flex justify-center items-center mb-5 text-white border-t-2 pt-3">
+
+            <!-- <button *ngFor="let page of pages" (click)="setCurrentPage(page)"
+            class="mx-2 px-2 py-1 bg-gray-300 hover:bg-gray-400">
+            {{ page }}
+          </button> -->
+          <button class="bi bi-chevron-left text-lg mx-2 size-10 p-2 rounded-full bg-green-600 flex justify-center items-center hover:bg-green-700" (click)="setCurrentPage(currentPage - 1)" [disabled] = "currentPage <= 1" [class.cursor-not-allowed] = "currentPage <= 1"></button>
+
+          <span class="mx-2 size-14 p-2 rounded-full bg-green-600/10 border-2 border-green-600 flex justify-center items-center text-lg font-bold text-gray-600">{{ currentPage }}/{{ pages.length }}</span>
+
+          <button class="bi bi-chevron-right text-lg mx-2 size-10 p-2 rounded-full bg-green-600 flex justify-center items-center hover:bg-green-700" (click)="setCurrentPage(currentPage + 1)" [disabled] = "currentPage >= pages.length" [class.cursor-not-allowed] = "currentPage >= pages.length"></button>
+
+          <!-- <button *ngFor="let page of pages" (click)="setCurrentPage(page)"
+            class="mx-2 px-2 py-1 bg-gray-300 hover:bg-gray-400">
+            {{ page }}
+          </button> -->
+        </div>
+      </div>
+</section>
