@@ -1,0 +1,30 @@
+.bg-image{
+    background: url(../../../../public/assets/images/8939199fdfeee4487ad70e20472ea5a9.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.shape::before{
+    content: '';
+    background-color: transparent;
+    height: 20px; 
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 105px;
+    box-shadow: 20px -20px 2px 10px #2563eb;
+}
+
+.shape::after{
+    content: '';
+    background-color: transparent;
+    height: 20px; 
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 105px;
+    box-shadow: -20px -20px 2px 10px #2563eb;
+}

@@ -1,1 +1,81 @@
-<section>   </section>
+<section class="w-screen min-h-screen bg-image transition-all ease-in-out duration-1000">
+    <div class="w-full min-h-screen h-full bg-black/75 flex justify-center items-center px-12 py-24">
+        <div class="w-96 border-2 bg-blue-600/10 border-blue-600 rounded-md backdrop-blur-md overflow-hidden text-white">
+            <div class="relative flex justify-center font-semi-bold text-lg px-12">
+                <p class="bg-blue-600 px-6 py-3 rounded-md shape">Inscription</p>
+            </div>
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="w-full mt-4 h-full p-6 pt-0 flex flex-col gap-4">
+                <div class="">
+                    <input type="email" 
+                    formControlName="email" id="email" placeholder="votre email" class="bg-white/5 w-full px-6 py-3 border-b-2 border-gray-300 hover:border-blue-600 focus:border-blue-600 focus:transition-shadow focus:outline-none rounded">
+                </div>
+                <div class="">
+                    <input type="tel" 
+                    formControlName="telephone" id="telephone" placeholder="votre telephone" class="bg-white/5 w-full px-6 py-3 border-b-2 border-gray-300 hover:border-blue-600 focus:border-blue-600 focus:transition-shadow focus:outline-none rounded">
+                </div>
+                <div class="">
+                    <input type="text" 
+                    formControlName="username" id="username" placeholder="votre nom d'utilisateur" class="bg-white/5 w-full px-6 py-3 border-b-2 border-gray-300 hover:border-blue-600 focus:border-blue-600 focus:transition-shadow focus:outline-none rounded">
+                </div>
+                <div class="relative">
+                    <input
+                      [type]="showPassword ? 'text' : 'password'"
+                      class="bg-white/5 w-full px-6 py-3 border-b-2 border-gray-300 hover:border-blue-600 focus:border-blue-600 focus:transition-shadow focus:outline-none rounded"
+                      placeholder="votre mot de passe"
+                      formControlName="password"/>
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center z-50 pr-3 cursor-pointer"
+                      (click)="togglePassword()"
+                    >
+                      <span
+                        [class]="
+                          showPassword
+                            ? 'bi bi-eye-fill text-gray-500'
+                            : 'bi bi-eye-slash-fill text-gray-500'
+                        "
+                      ></span>
+                    </div>
+                </div>
+                <div class="relative">
+                    <input
+                      [type]="showCPassword ? 'text' : 'password'"
+                      class="bg-white/5 w-full px-6 py-3 border-b-2 border-gray-300 hover:border-blue-600 focus:border-blue-600 focus:transition-shadow focus:outline-none rounded"
+                      placeholder="confirmez votre mot de passe"
+                      formControlName="cPassword"/>
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center z-50 pr-3 cursor-pointer"
+                      (click)="toggleCPassword()"
+                    >
+                      <span
+                        [class]="
+                          showCPassword
+                            ? 'bi bi-eye-fill text-gray-500'
+                            : 'bi bi-eye-slash-fill text-gray-500'
+                        "
+                      ></span>
+                    </div>
+                </div>
+                <div class="">
+                    <input type="submit" name="submit" id="submit" class="bg-blue-600 w-full px-6 py-3 border-2 border-blue-600 hover:bg-blue-900 hover:border-blue-900 rounded font-semibold" value="S'inscrire">
+                </div>
+                <p class="italic">vous avez deja un compte? <a [routerLink]="['/login']" class="ml-2 hover:underline hover:text-blue-600">Se connecter</a></p>
+            </form>
+        </div>
+    </div>
+</section>
+<div
+  *ngFor="let errorMessage of errorMessages; let i = index"
+  class="fixed top-14 left-0 w-full transform -translate-x-0  border-l-8 backdrop-blur-md text-white px-4 py-3 shadow-lg transition-all duration-500 z-10" [class]="!errorMessages[i].error ? 'bg-green-600/20 border-green-600' : 'bg-red-600/20 border-red-600'"
+  [class.translate-y-[-0.8rem]]="errorMessages[i].showMessage"
+  [class.translate-y-[-8rem]]="!errorMessages[i].showMessage"
+>
+  <div class="flex items-center justify-between">
+    <span>{{ errorMessage.message }}</span>
+    <button
+      class="text-white hover:text-gray-300 focus:outline-none"
+      (click)="dismissErrorMessage(i)"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+</div>

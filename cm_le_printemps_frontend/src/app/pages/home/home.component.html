@@ -27,7 +27,18 @@
         <div class="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 gap-3">
             <!-- <div class="" *ngfor>
                 <div class="" *ngif> -->
-                    <div class="p-1 rounded hover:shadow-lg shadow-blue-600 border flex flex-col flex-grow">
+                    
+                    <div *ngFor="let srv of listeService" class="p-1 rounded hover:shadow-lg shadow-blue-600 border flex flex-col flex-grow">
+                        <div class="w-full rounded h-48 max-md:h-40 overflow-hidden">
+                            <img src="assets/images/{{ srv.image }}" alt="{{ srv.nom }}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-sm max-md:text-lg text-justify">
+                            <p class="text-green-600 font-semibold my-2">{{ srv.nom }}</p>
+                            <p class="text-gray-600">{{ srv.description }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="p-1 rounded hover:shadow-lg shadow-blue-600 border flex flex-col flex-grow">
                         <div class="w-full rounded h-48 max-md:h-40 overflow-hidden">
                             <img src="assets/images/b5fc40d9a9f57e150495f11ac152c5d5.jpg" alt="" class="w-full h-full object-cover">
                         </div>
@@ -62,7 +73,7 @@
                             <p class="text-green-600 font-semibold my-2">Bilan de santé complet</p>
                             <p class="text-gray-600">Évaluation approfondie de votre état de santé global.</p>
                         </div>
-                    </div>
+                    </div> -->
                 <!-- </div>
             </div> -->
         </div>
