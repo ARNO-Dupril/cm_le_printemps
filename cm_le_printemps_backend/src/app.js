@@ -8,6 +8,9 @@ import cors from 'cors';
 //  importation de morgan pour ... 
 import morgan from 'morgan';
 
+//  importation de helmet pour securiser mes requettes
+import helmet from 'helmet';
+
 //  importation de cookie-parser pour gerer les cookies
 import cookieParser from 'cookie-parser';
 
@@ -30,6 +33,9 @@ createAllFolder();
 
 //  configuration de morgan
 app.use(morgan("dev"));
+
+//  configuration de helmet
+app.use(helmet());
 
 //  configuration de la conversion des cookies
 app.use(cookieParser());

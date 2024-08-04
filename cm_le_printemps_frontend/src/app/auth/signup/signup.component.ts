@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormsModule, ReactiveFormsModule, Validators, ValidationErrors } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/server/auth.service';
 
 
 interface ErrorMessage {
@@ -32,7 +33,7 @@ export class SignupComponent {
   signupForm: FormGroup;
   errorMessages: ErrorMessage[] = [];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private signupService: AuthService, private router:Router) {
     this.signupForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       telephone: ['', [Validators.required], [Validators.minLength(9)]],
@@ -68,9 +69,28 @@ export class SignupComponent {
         }
       }
     } else {
-      // Traiter le formulaire valide ici
-      this.addSuccessMessage('votre formulaire est valide.');
-      console.log('Form submitted:', this.signupForm.value);
+
+      // if (this.signupForm.valid) {
+        // Traiter le formulaire valide ici
+        console.log('Form submitted:', this.signupForm.value);
+        try {
+          this.signupService
+          .signup(this.signupForm.value)
+          .then((response) => {
+            if (response.data) {
+              console.log('compte creer avec succes!!! ', response);
+              this.router.navigate(['/login']);
+            } else {
+              console.log(response);
+              this.addErrorMessage(!response.general ? JSON.stringify(response) : JSON.stringify(response.general) );
+            }
+          })
+        } catch (error) {
+          this.addErrorMessage('une erreur est survenue: '+ error);
+          console.log('une erreur est survenue: ', error);
+        }
+      // }
+
     }
   }
 
@@ -78,7 +98,7 @@ export class SignupComponent {
     this.errorMessages.push({ message, showMessage: true, error: true });
     setTimeout(() => {
       this.errorMessages[this.errorMessages.length - 1].showMessage = false;
-    }, 3000);
+    }, 30000);
   }
 
   addSuccessMessage(message: string) {

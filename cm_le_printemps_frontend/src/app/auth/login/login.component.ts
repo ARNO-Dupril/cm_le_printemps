@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/server/auth.service';
 
 interface ErrorMessage {
   message: string;
   showMessage: boolean;
   error: boolean;
 }
-
 
 @Component({
   selector: 'app-login',
@@ -22,17 +22,18 @@ interface ErrorMessage {
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   password = '';
   showPassword = false;
   loginForm: FormGroup;
   errorMessages: ErrorMessage[] = [];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private loginService: AuthService, private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
+    // this.show();
   }
 
   togglePassword() {
@@ -51,8 +52,37 @@ export class LoginComponent {
       }
     } else {
       // Traiter le formulaire valide ici
-      this.addSuccessMessage('votre formulaire est valide.');
-      console.log('Form submitted:', this.loginForm.value);
+      try {
+        console.log('Form submitted:', this.loginForm.value);
+        const { email, password } = this.loginForm.value;
+        this.loginService
+        .login(email, password)
+        .then(response => {
+          if (response.success) {
+            // Stocker le jeton d'authentification dans le stockage local ou les cookies
+            localStorage.setItem('token', response.token);
+            console.log('====================================');
+            const token = localStorage.getItem('token') as string;
+            this.loginService.userIsAuth = true;
+            this.loginService.userToken = token;
+            console.log({
+              userIsAuth: this.loginService.userIsAuth,
+              token: this.loginService.userToken
+            });
+            console.log('====================================');
+            // Rediriger l'utilisateur vers la page d'accueil ou une page protégée
+            this.router.navigate(['/']);
+          } else {
+            // Afficher un message d'erreur
+            console.error(response.error);
+            this.addErrorMessage(response.error);
+          }
+        })
+      } catch (error) {
+        console.error(error);
+        // Afficher un message d'erreur
+        this.addSuccessMessage('Une erreur s\'est produite!!  \n Veillez reessayer!!');
+      }
     }
   }
 
@@ -72,6 +102,10 @@ export class LoginComponent {
 
   dismissErrorMessage(index: number) {
     this.errorMessages.splice(index, 1);
+  }
+
+  ngOnInit(): void {
+    
   }
 
 }

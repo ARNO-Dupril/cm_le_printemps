@@ -15,6 +15,9 @@ export async function getAllUsers(){
 //   inscription d'un utilisateur (post)
 export async function postSignup(password, confirmPassword, email, nom, prenom, username, telephone) {
     try {
+        console.log('====================================');
+        console.log("debut auth service");
+        console.log('====================================');
         // Vérifier que les mots de passe correspondent
         if (password !== confirmPassword) {
             return {
@@ -51,7 +54,7 @@ export async function postSignup(password, confirmPassword, email, nom, prenom, 
 
         // Enregistrer le nouvel utilisateur
         const utilisateurEnregistre = await nouvelUtilisateur.save();
-
+        
         console.log("Fin de l'inscription");
         return {
             success: true,

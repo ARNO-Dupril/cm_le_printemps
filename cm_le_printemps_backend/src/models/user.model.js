@@ -4,12 +4,12 @@ const userSchema = new mongoose.Schema(
   {
     nom: {
       type: String,
-      required: true,
+      required: false,
       maxlength: 25,
     },
     prenom: {
       type: String,
-      required: true,
+      required: false,
       maxlength: 25,
     },
     username: {

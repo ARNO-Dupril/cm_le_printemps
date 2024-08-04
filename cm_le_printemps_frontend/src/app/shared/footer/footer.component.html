@@ -64,8 +64,8 @@
             <div class="w-3/5 max-w-max max-sm:w-11/12 border-2 border-blue-600 rounded-md p-5 bg-blue-900/75 backdrop-blur-sm">
                 <p class="text-2xl max-md:text-lg mb-3">Restez informé de nos dernières actualités et offres exclusives </p>
                 <p class="text-gray-300 text-sm">veillez entrer votre adresse E-mail pour vous abonner  notre bulletin d'information</p>
-                <form class="w-full flex flex-row gap-3 mt-8">
-                    <input type="text" name="newsletter" id="newsletter" placeholder="Adresse E-mail" class="h-10 pl-5 max-md:pl-3 flex-grow flex-shrink bg-gray-400 text-white placeholder:text-white placeholder:text-xs text-sm rounded-sm hover:bg-gray-600 focus:outline-none focus:border-none focus:bg-gray-600">
+                <form [formGroup]="newsletterForm" (ngSubmit)="onSubmit()" class="w-full flex flex-row gap-3 mt-8">
+                    <input formControlName = "newsletter" type="email" name="newsletter" id="newsletter" placeholder="Adresse E-mail" class="h-10 pl-5 max-md:pl-3 flex-grow flex-shrink bg-gray-400 text-white placeholder:text-white placeholder:text-xs text-sm rounded-sm hover:bg-gray-600 focus:outline-none focus:border-none focus:bg-gray-600">
                     <button type="submit" class="h-10 px-6 bg-blue-600 hover:bg-blue-700 text-sm rounded-sm">Souscrire</button>
                 </form>
             </div>
@@ -82,3 +82,20 @@
         </p>
     </div>
 </section>
+
+<div
+  *ngFor="let errorMessage of errorMessages; let i = index"
+  class="fixed top-14 left-0 w-full transform -translate-x-0  border-l-8 backdrop-blur-md  px-4 py-3 shadow-lg transition-all duration-500 z-10" [class]="!errorMessages[i].error ? 'bg-green-600/20 border-green-600 text-green-600' : 'bg-red-600/20 border-red-600 text-red-600'"
+  [class.translate-y-[-0.8rem]]="errorMessages[i].showMessage"
+  [class.translate-y-[-8rem]]="!errorMessages[i].showMessage"
+>
+  <div class="flex items-center justify-between">
+    <span>{{ errorMessage.message }}</span>
+    <button
+      class="text-white hover:text-gray-300 focus:outline-none"
+      (click)="dismissErrorMessage(i)"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+</div>

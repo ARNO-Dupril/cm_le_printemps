@@ -164,7 +164,7 @@ class Auth {
         const login = await bcrypt.compare(password, data.password);
         if (login) {
           const token = jwt.sign(
-            { _id: data._id, email: data.email, role: data.userRole },
+            { _id: data._id, email: data.email, role: data.userRole, username: data.username },
             JWT_SECRET
           );
           const encode = jwt.verify(token, JWT_SECRET);
