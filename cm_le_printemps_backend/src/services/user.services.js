@@ -14,7 +14,7 @@ export async function getUser(id) {
 
 //   ajout d'un utilisateur (post)
 export async function postAddUser(reqData) {
-    console.log("start add user");
+    console.log(reqData);
 
     let {
         nom,
@@ -24,6 +24,7 @@ export async function postAddUser(reqData) {
         email,
         password,
         profil,
+        userRole,
         verified,
         secretKey,
         history
@@ -38,11 +39,12 @@ export async function postAddUser(reqData) {
         email,
         password,
         profil,
+        userRole,
         verified,
         secretKey,
         history,
     });
-    console.log("stop add user");
+    console.log(newData);
 
     return await newData.save();
 }

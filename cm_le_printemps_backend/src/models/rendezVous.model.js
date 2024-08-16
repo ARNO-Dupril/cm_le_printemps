@@ -18,21 +18,11 @@ const rdvSchema = new Schema(
       required: true,
       default: 'adolescent',
       enum: [
-        'moins de 6ans',
+        'bebe',
+        'enfant',
         'adolescent',
         'adulte',
-        '45ans et plus',
       ],
-    },
-    poids: {
-        type: String,
-        required: true,
-        default: '50 - 65kg',
-        enum: [
-          'moins de 50kg',
-          '50 - 80kg',
-          'plus de 80kg',
-        ],
     },
     sexe: {
       type: String,
@@ -42,6 +32,10 @@ const rdvSchema = new Schema(
         'masculin',
         'feminin',
       ],
+    },
+    description: {
+      type: String,
+      required: false,
     },
     serviceId: {
       type:  ObjectId, 

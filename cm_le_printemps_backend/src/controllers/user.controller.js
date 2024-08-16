@@ -30,7 +30,7 @@ class User {
       });
     } else {
       try {
-        let User = await getUser(id);
+        let User = await getUser(userId);
         if (User) {
           return res.json({ 
             success: true,
@@ -45,36 +45,68 @@ class User {
   }
 
 //   ajout d'un utilisateur (post)
+  // async addUser(req, res) {
+  //   let { nom, prenom, username, telephone, email, password, verified, secretKey, history } = req.body;
+  //   let profil = req.file ? `uploads/users/${req.file.filename}` : null;
+  //   if (
+  //     !nom ||
+  //     !prenom ||
+  //     !username ||
+  //     !telephone ||
+  //     !email ||
+  //     !password
+  //   ) {
+  //     return res.json({ message: "veillez remplir tout les champs" });
+  //   } else {
+  //     try {
+  //       let save = await postAddUser({ nom, prenom, username, telephone, email, password, profil, verified, secretKey, history });
+  //       if (save) {
+  //         return res.json({ 
+  //           success: true ,
+  //           message: "utilisateur creer avec succes",
+  //       });
+  //       }
+  //     } catch (error) {
+  //       console.log("erreur:", error);
+  //       return res.json({
+  //           success: false, 
+  //           error: true,
+  //           message: error, 
+  //       });
+  //     }
+  //   }
+  // }
+
   async addUser(req, res) {
-    let { nom, prenom, username, telephone, email, password, profil, verified, secretKey, history } = req.body;
-    if (
-      !nom ||
-      !prenom ||
-      !username ||
-      !telephone ||
-      !email ||
-      !password
-    ) {
-      return res.json({ message: "veillez remplir tout les champs" });
-    } else {
-      try {
-        let save = await postAddUser(req.body);
-        if (save) {
-          return res.json({ 
-            success: true ,
-            message: "utilisateur creer avec succes",
-        });
-        }
-      } catch (error) {
-        console.log("erreur:", error);
+    let { nom, prenom, username, telephone, email, password, userRole, verified, secretKey, history } = req.body;
+    let profil = "uploads/users/user.png";
+    if (req.file) {
+      profil = `uploads/users/${req.file.filename}`;
+    }
+  
+    if (!nom || !prenom || !username || !telephone || !email || !password) {
+      return res.json({ message: "Veuillez remplir tous les champs" });
+    }
+  
+    try {
+      let save = await postAddUser({ nom, prenom, username, telephone, email, password, userRole, profil, verified, secretKey, history });
+      if (save) {
         return res.json({
-            success: false, 
-            error: true,
-            message: error, 
+          success: true,
+          message: "Utilisateur créé avec succès",
         });
       }
+    } catch (error) {
+      console.log("Erreur :", error);
+      return res.json({
+        success: false,
+        error: true,
+        message: error,
+      });
     }
   }
+
+
 
 //   edition d'un utilisateur (post)
   async editUser(req, res) {

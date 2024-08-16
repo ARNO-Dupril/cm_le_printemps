@@ -16,7 +16,16 @@ const serviceSchema = new Schema(
       maxlength: 25,
       index: { unique: false },
     },
-    descriptionS: {
+    description: {
+      type: String,
+      required: true,
+    },
+    actif: {
+      type: Boolean,
+      required: true,
+      default: true
+    },
+    image: {
       type: String,
       required: true,
     },

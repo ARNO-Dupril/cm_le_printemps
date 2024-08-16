@@ -19,7 +19,7 @@ const demandeSchema = new Schema(
         'attente',
         'confirmé',
         'annulé',
-        'reporté',
+        // 'reporté',
       ]
     },
     rdvId: {

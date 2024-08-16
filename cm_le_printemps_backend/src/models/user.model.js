@@ -47,10 +47,10 @@ const userSchema = new mongoose.Schema(
     },
     profil: {
       type: String,
-      default: "user.png",
+      default: "uploads/users/user.png",
     },
     verified: {
-      type: String,
+      type: Boolean,
       default: false,
     },
     secretKey: {

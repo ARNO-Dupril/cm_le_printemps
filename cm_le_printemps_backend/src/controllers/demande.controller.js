@@ -36,7 +36,7 @@ class Demande {
         try {
           const { id } = req.params;
           const demandes = req.body;
-          const updatedDemande = await demandeServiceJs.updateDemande(id, updates);
+          const updatedDemande = await demandeServiceJs.updateDemande(id, demandes);
           if (!updatedDemande) {
             return res.status(404).json({ message: "la demande est introuvable" });
           }

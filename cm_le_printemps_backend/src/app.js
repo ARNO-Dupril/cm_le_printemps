@@ -2,6 +2,9 @@ import express, { json, urlencoded } from 'express';
 
 const app = express();
 
+//  importation de path pour gerer les chemins d'acces
+import path from "path";
+
 //  importation de cors pour gerer la communication avec les serveurs externes
 import cors from 'cors';
 
@@ -47,7 +50,11 @@ app.use(cors());
 app.use(json());
 
 //  configuration du dossier public pour les images
-app.use(express.static("src/public"));
+// app.use(express.static(path.join(path.resolve(), 'public')));
+app.use(express.static(path.join('src', 'public')));
+
+// Configurer le dossier public pour servir les fichiers statiques
+// app.use('/uploads', express.static(path.join(path.resolve(), 'src/public/upload/users')));
 
 //  configuration de l'encodage des url
 app.use(urlencoded({ extended: false }));
@@ -67,6 +74,21 @@ app.use(cors({
         'Authorization'
     ]
 }));
+
+// app.use(cors({
+//     origin: '*',    // autorise les requettes depuis l'application angular
+//     methods: [
+//         'GET',  //  requettes de recuperation de donnée sur un serveur
+//         'POST',  //  requettes d'envoi de donnée sur un serveur
+//         'PUT',  //  requettes de mise a jour de donnée sur un serveur
+//         'DELETE',  //  requettes de suppression de donnée sur un serveur
+//         'OPTIONS'
+//     ],
+//     allowedHeaders: [
+//         'Content-Type',
+//         'Authorization'
+//     ]
+// }));
 
 //  gestion des erreurs
 app.use((err, req, res, next) => {
