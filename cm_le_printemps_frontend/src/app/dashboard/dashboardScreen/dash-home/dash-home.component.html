@@ -1,1 +1,170 @@
-<p>dash-home works!</p>
+<section class="w-full h-full">
+
+    <div class="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 gap-2 mb-12">
+
+        <div class="group h-40 p-2 flex flex-col justify-start hover:bg-blue-600 rounded-xl shadow-lg transition-all ease-in-out duration-300 text-nowrap overflow-hidden">
+            <p class="flex items-center gap-4 text-blue-600 group-hover:text-white mb-2">
+                <span class="bi bi-clock-fill text-2xl"></span>
+                <span class="text-lg font-semibold">12/08/2024 14:50</span>
+            </p>
+            <p class=" text-blue-600 group-hover:text-white">
+                <span class="text-lg font-semibold">Patient: </span>
+                <span class="capitalize text-black group-hover:text-white font-medium">John Doe <span class="text-sm italic">(Adulte-Homme)</span></span>
+            </p>
+            <p class=" text-blue-600 group-hover:text-white">
+                <span class="text-lg font-semibold">Service: </span>
+                <span class="capitalize text-black group-hover:text-white font-medium">Cardiologie</span>
+            </p>
+            <p class="text-lg grow content-end">
+                <span class="font-semibold group-hover:text-white">Statut: </span>
+                <span class="px-2 py-1 text-sm text-white group-hover:bg-white group-hover:text-blue-600 rounded bg-blue-600">En attente</span>
+            </p>
+        </div>
+        <div class="group h-40 p-2 flex flex-col justify-start hover:bg-blue-600 rounded-xl shadow-lg transition-all ease-in-out duration-300 text-nowrap overflow-hidden">
+            <p class="flex items-center gap-4 text-blue-600 group-hover:text-white mb-2">
+                <span class="bi bi-clock-fill text-2xl"></span>
+                <span class="text-lg font-semibold">12/08/2024 14:50</span>
+            </p>
+            <p class=" text-blue-600 group-hover:text-white">
+                <span class="text-lg font-semibold">Patient: </span>
+                <span class="capitalize text-black group-hover:text-white font-medium">John Doe <span class="text-sm italic">(Adulte-Homme)</span></span>
+            </p>
+            <p class=" text-blue-600 group-hover:text-white">
+                <span class="text-lg font-semibold">Service: </span>
+                <span class="capitalize text-black group-hover:text-white font-medium">Cardiologie</span>
+            </p>
+            <p class="text-lg grow content-end">
+                <span class="font-semibold group-hover:text-white">Statut: </span>
+                <span class="px-2 py-1 text-sm text-white group-hover:bg-white group-hover:text-blue-600 rounded bg-blue-600">En attente</span>
+            </p>
+        </div>
+        <div class="group h-40 p-2 flex flex-col justify-start hover:bg-blue-600 rounded-xl shadow-lg transition-all ease-in-out duration-300 text-nowrap overflow-hidden">
+            <p class="flex items-center gap-4 text-blue-600 group-hover:text-white mb-2">
+                <span class="bi bi-clock-fill text-2xl"></span>
+                <span class="text-lg font-semibold">12/08/2024 14:50</span>
+            </p>
+            <p class=" text-blue-600 group-hover:text-white">
+                <span class="text-lg font-semibold">Patient: </span>
+                <span class="capitalize text-black group-hover:text-white font-medium">John Doe <span class="text-sm italic">(Adulte-Homme)</span></span>
+            </p>
+            <p class=" text-blue-600 group-hover:text-white">
+                <span class="text-lg font-semibold">Service: </span>
+                <span class="capitalize text-black group-hover:text-white font-medium">Cardiologie</span>
+            </p>
+            <p class="text-lg grow content-end">
+                <span class="font-semibold group-hover:text-white">Statut: </span>
+                <span class="px-2 py-1 text-sm text-white group-hover:bg-white group-hover:text-blue-600 rounded bg-blue-600">En attente</span>
+            </p>
+        </div>
+        <div class="group h-40 p-2 flex flex-col justify-start hover:bg-blue-600 rounded-xl shadow-lg transition-all ease-in-out duration-300 text-nowrap overflow-hidden">
+            <p class="flex items-center gap-4 text-blue-600 group-hover:text-white mb-2">
+                <span class="bi bi-clock-fill text-2xl"></span>
+                <span class="text-lg font-semibold">12/08/2024 14:50</span>
+            </p>
+            <p class=" text-blue-600 group-hover:text-white">
+                <span class="text-lg font-semibold">Patient: </span>
+                <span class="capitalize text-black group-hover:text-white font-medium">John Doe <span class="text-sm italic">(Adulte-Homme)</span></span>
+            </p>
+            <p class=" text-blue-600 group-hover:text-white">
+                <span class="text-lg font-semibold">Service: </span>
+                <span class="capitalize text-black group-hover:text-white font-medium">Cardiologie</span>
+            </p>
+            <p class="text-lg grow content-end">
+                <span class="font-semibold group-hover:text-white">Statut: </span>
+                <span class="px-2 py-1 text-sm text-white group-hover:bg-white group-hover:text-blue-600 rounded bg-blue-600">En attente</span>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="flex flex-row max-md:flex-col gap-2">
+
+        <div class="w-3/4 max-md:w-full p-2">
+            <div class="flex justify-between items-center p-2">
+                <p class="text-xl">Demandes de <span class="text-blue-600 italic font-semibold">Rendez-vous</span></p>
+                <a [routerLink]="['/dashboard/',id,'demande']" class="px-3 py-2 bg-blue-600 hover:bg-blue-900 text-white rounded">voir plus ...</a>
+            </div>
+            <table class="w-full h-auto bg-gray-200/20 shadow-lg shadow-gray-200 text-nowrap">
+                <thead class="text-white font-semibold text-lg bg-blue-600">
+                    <td class="p-2 text-center">N<sup>o</sup></td>
+                    <td class="p-2 text-left">Patient</td>
+                    <td class="p-2 text-right">Service</td>
+                    <td class="p-2 text-left">Date du rdv</td>
+                    <td class="p-2 text-right">Statut</td>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-blue-600/50 hover:text-white border-b border-gray-200 capitalize">
+                        <td class="p-2 text-center">01</td>
+                        <td class="p-2 text-left">john doe</td>
+                        <td class="p-2 text-right">cardiologie</td>
+                        <td class="p-2 text-left">12/08/2024</td>
+                        <td class="p-2 text-right"><span class="px-2 py-1 bg-blue-600 rounded text-white text-sm">en attente</span></td>
+                    </tr>
+                    <tr class="hover:bg-blue-600/50 hover:text-white border-b border-gray-200 capitalize">
+                        <td class="p-2 text-center">01</td>
+                        <td class="p-2 text-left">john doe</td>
+                        <td class="p-2 text-right">cardiologie</td>
+                        <td class="p-2 text-left">12/08/2024</td>
+                        <td class="p-2 text-right"><span class="px-2 py-1 bg-green-600 rounded text-white text-sm">effectué</span></td>
+                    </tr>
+                    <tr class="hover:bg-blue-600/50 hover:text-white border-b border-gray-200 capitalize">
+                        <td class="p-2 text-center">01</td>
+                        <td class="p-2 text-left">john doe</td>
+                        <td class="p-2 text-right">cardiologie</td>
+                        <td class="p-2 text-left">12/08/2024</td>
+                        <td class="p-2 text-right"><span class="px-2 py-1 bg-blue-600 rounded text-white text-sm">en attente</span></td>
+                    </tr>
+                    <tr class="hover:bg-blue-600/50 hover:text-white border-b border-gray-200 capitalize">
+                        <td class="p-2 text-center">01</td>
+                        <td class="p-2 text-left">john doe</td>
+                        <td class="p-2 text-right">cardiologie</td>
+                        <td class="p-2 text-left">12/08/2024</td>
+                        <td class="p-2 text-right"><span class="px-2 py-1 bg-red-600 rounded text-white text-sm">annulé</span></td>
+                    </tr>
+                    <tr class="hover:bg-blue-600/50 hover:text-white border-b border-gray-200 capitalize">
+                        <td class="p-2 text-center">01</td>
+                        <td class="p-2 text-left">john doe</td>
+                        <td class="p-2 text-right">cardiologie</td>
+                        <td class="p-2 text-left">12/08/2024</td>
+                        <td class="p-2 text-right"><span class="px-2 py-1 bg-blue-600 rounded text-white text-sm">en attente</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        
+        <div class="w-1/4 max-md:w-full p-2">
+            <div class="flex justify-between items-center p-2">
+                <p class="text-xl"><span class="text-blue-600 italic font-semibold">Utilisateurs </span> recents</p>
+            </div>
+            <table class="w-full h-auto bg-gray-200/20 shadow-lg shadow-gray-200">
+                <tbody>
+                    <ng-container *ngFor="let user of this.service.users; index as i">
+                        <tr *ngIf="i < 5" class="hover:bg-blue-600/50 hover:text-white border-b border-gray-200 capitalize">
+                            <td class="p-2 w-11">
+                                <div class="size-10 border-2 border-blue-600/50 bg-white rounded-full">
+                                    <img src="{{user.profil ? 'http://localhost:4500/'+user.profil : ''}}" alt="john doe" class="h-full w-full object-cover" crossorigin="anonymous">
+                                </div>
+                            </td>
+                            <td class="h-full p-2 text-left flex flex-col max-md:flex-row max-md:items-center gap-1">
+                                <span class="text-lg font-semibold">{{user.nom ? user.nom : user.email}}</span>
+                                <span class="italic">({{user.userRole == 1 ? "administrateur" : "utilisateur"}})</span>
+                            </td>
+                        </tr>
+                    </ng-container>
+                    <!-- <tr *ngFor="let user of this.service.users; index as i" *ngIf="(i) < 3" class="hover:bg-blue-600/50 hover:text-white border-b border-gray-200 capitalize">
+                        <td class="p-2 w-11">
+                            <div class="size-10 border-2 border-blue-600/50 bg-white rounded-full">
+                                <img src="{{user.profil ? 'http://localhost:4500/'+user.profil : ''}}" alt="john doe" class="h-full w-full object-cover" crossorigin="anonymous">
+                            </div>
+                        </td>
+                        <td class="h-full p-2 text-left flex flex-col max-md:flex-row max-md:items-center gap-1"><span class="text-lg font-semibold">{{user.nom ? user.nom : user.email}}</span><span class="italic">({{user.userRole == 1 ? "administrateur" : "utilisateur"}})</span> </td>
+                    </tr> -->
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</section>

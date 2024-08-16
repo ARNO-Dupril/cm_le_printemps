@@ -1,1 +1,317 @@
-<p>service works!</p>
+<section class="w-full h-full">
+    <div class="p-6 grid grid-cols-3 max-md:grid-cols-1 gap-6">
+        <div class="col-span-2 max-md:col-span-1">
+            <div class="flex justify-between items-center mb-2">
+                <p class="text-xl">Liste des <span class="text-blue-600 italic font-semibold">Services</span></p>
+                <span class="p-2 bg-green-500 rounded-md text-white hover:bg-green-600" (click)="closeForm()"><span class="bi bi-plus-lg"></span> ajouter</span>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                <table class="w-full ">
+                    <thead class="font-semibold bg-blue-500 text-white">
+                        <td class="p-2 text-center">N<sup>o</sup></td>
+                        <td class="p-2 text-right">Code</td>
+                        <td class="p-2 text-left">Nom</td>
+                        <td class="p-2 text-right max-md:hidden">Description</td>
+                        <td class="p-2 text-left">status</td>
+                        <td class="p-2 text-center">Action</td>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let service of this.service.services; index as i" class="hover:bg-blue-50 border-b border-blue-100 capitalize">
+                            <td class="p-2 text-center">{{(i+1).toString().length < 2 ? "0"+(i+1) : (i+1)}}</td>
+                            <td class="p-2 text-right uppercase">{{service.code}}</td>
+                            <td class="p-2 text-left">{{service.nom}}</td>
+                            <td class="p-2 text-right text-nowrap max-w-40 max-md:hidden overflow-x-hidden">{{service.description}}.</td>
+                            <td class="p-2 text-left">
+                                <label for="{{service._id}}" class="cursor-pointer w-10 h-5 relative border-2 border-green-500 bg-gray-100 rounded-full overflow-hidden flex items-center">
+                                    <input type="checkbox" name="{{service._id}}" id="{{service._id}}" class="sr-only peer" [checked]="service.actif" disabled>
+                                    <div class="h-4 w-4 rounded-full border-2 border-gray-100 bg-gray-500 absolute peer-checked:bg-green-500 peer-checked:translate-x-5 transition-all ease-linear duration-300"></div>
+                                </label>
+                            </td>
+                            <td class="p-2 text-center flex justify-center items-center gap-2 font-semibold text-lg">
+                                <span class="cursor-pointer bi bi-pencil-square text-blue-500" (click)="updateService(service._id)"></span>
+                                <span class="cursor-pointer bi bi-eye text-blue-900" (click)="loadDetails(i)"></span>
+                                <span class="cursor-pointer bi bi-trash text-red-500" (click)="delete(service._id)"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <!-- <tfoot *ngIf="this.service.services.length > itemsPerPage" class="h-9 text-white relative">
+                        <button class="bi bi-chevron-left size-8 p-2 rounded-md bg-blue-500 hover:bg-blue-900 flex justify-center items-center absolute top-1/4 right-[72px]" (click)="setCurrentPage(currentPage - 1)" [disabled] = "currentPage <= 1" [class.cursor-not-allowed] = "currentPage <= 1"></button>
+                
+                        <span class="size-8 p-2 rounded-md bg-blue-600/10 border-2 border-blue-600 flex justify-center items-center text-lg font-bold text-gray-600 absolute top-1/4 right-9">{{ currentPage }}/{{ pages.length }}</span>
+                
+                        <button class="bi bi-chevron-right size-8 p-2 rounded-md bg-blue-500 hover:bg-blue-900 flex justify-center items-center absolute top-1/4 right-0" (click)="setCurrentPage(currentPage + 1)" [disabled] = "currentPage >= pages.length" [class.cursor-not-allowed] = "currentPage >= pages.length"></button>
+                    </tfoot> -->
+                </table>
+            </div>
+        </div>
+        <div class="w-full">
+            <div class="h-12 flex justify-between items-center">
+                <p class="text-xl">Detail du service <span class="text-blue-600 italic font-semibold">{{this.service.services[this.idService] ? this.service.services[this.idService].nom : ''}}</span></p>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                <div class="grid grid-cols-2 max-md:grid-cols-3 max-sm:grid-cols-1 gap-2">
+                    <div class="w-ull h-40 max-md:h-80 max-md:col-span-3 max-sm:col-span-1 col-span-2 rounded-md overflow-hidden">
+                        <img src="http://localhost:4500/{{this.service.services[this.idService] ? this.service.services[this.idService].image : ''}}" alt="image de {{this.service.services[this.idService] ? this.service.services[this.idService].nom : ''}}" class="w-full h-full object-cover" crossorigin="anonymous">
+                    </div>
+                    <p class="flex flex-col capitalize  max-sm:col-span-1">
+                        <span class="font-semibold text-sm text-gray-400">Code</span>
+                        <span class="p-2 border-b border-gray-300 uppercase">{{this.service.services[this.idService] ? this.service.services[this.idService].code : ''}}</span>
+                    </p>
+                    <p class="flex flex-col capitalize max-sm:col-span-1">
+                        <span class="font-semibold text-sm text-gray-400">statut</span>
+                        <span class="p-2 border-b border-gray-300">{{this.service.services[this.idService] ? (this.service.services[this.idService].actif ? 'actif' : 'inActif') : ''}}</span>
+                    </p>
+                    <p class="flex flex-col capitalize col-span-2 max-md:col-span-1">
+                        <span class="font-semibold text-sm text-gray-400">nom</span>
+                        <span class="p-2 border-b border-gray-300">{{this.service.services[this.idService] ? this.service.services[this.idService].nom : ''}}</span>
+                    </p>
+                    <p class="flex flex-col capitalize max-md:col-span-3 max-sm:col-span-1 col-span-2">
+                        <span class="font-semibold text-sm text-gray-400">Description</span>
+                        <span class="p-2 border-b border-gray-300 text-justify text-wrap">{{this.service.services[this.idService] ? this.service.services[this.idService].description : ''}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div *ngIf="formOpen" class="w-screen h-screen fixed top-0 left-0 bg-black/70 flex flex-col justify-center items-center overflow-auto">
+    <div class="p-6 rounded-md shadow-md shadow-gray-300 bg-white">
+        <p class="text-xl mb-5">Ajoutez un service</p>
+        <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()" class="grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-2">
+            <div class="pt-2 mb-2 relative">
+                <input
+                  type="text"
+                  id="code"
+                  formControlName="code"
+                  class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+                  placeholder=" "
+                />
+                <label
+                  for="code"
+                  class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                >
+                  Code
+                </label>
+            </div>
+
+            <div class="pt-2 mb-2 relative">
+                <input
+                  type="text"
+                  id="nom"
+                  formControlName="nom"
+                  class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+                  placeholder=" "
+                />
+                <label
+                  for="nom"
+                  class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                >
+                  Nom
+                </label>
+            </div>
+            
+            <div class="mb-2 row-span-3 max-md:row-span-2 max-md:col-span-2 max-sm:col-span-1 flex flex-col gap-2">
+                <div class="w-52 max-md:w-full h-40 bg-gray-200 rounded-md border-2 border-gray-300 flex-grow">
+                    <img *ngIf="imageUrl" [src]="imageUrl" alt="service" class="w-full h-full object-cover">
+                </div>
+                <label for="image" class="w-full flex flex-col">
+                    <input type="file" id="image"
+                    formControlName="image" class="sr-only" (change)="onFileChange($event)">
+                    <span class="w-full px-3 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-sm text-center">Parcourir</span>
+                </label>
+            </div>
+            
+            <div class="pt-2 mb-2 relative col-span-2 max-sm:col-span-1">
+                <textarea
+                  id="description"
+                  formControlName="description"
+                  class="w-full h-32 resize-none border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 focus:ring-0 focus:translate-y-[-6px] peer"
+                  placeholder=" "
+                ></textarea>
+                <label
+                  for="description"
+                  class="absolute peer-placeholder-shown:top-1/4 top-0 left-0 -translate-y-3 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                >
+                Description
+                </label>
+            </div>
+
+            <div class="col-span-2 max-md:col-span-1 flex flex-col gap-2">
+                <p class="text-sm text-gray-500">Statut</p>
+                <div class="grid grid-cols-2 gap-2">
+                                      
+                    <div class="capitalize text-center flex items-center">
+                        <input
+                        type="radio"
+                        name="statut"
+                        class="sr-only"
+                        id="actif"
+                        [checked]="isActive === true"
+                        (change)="changeIsActive(true)"
+                        />
+                        <label
+                        for="actif"
+                        class="w-full bg-blue-400 hover:bg-blue-700 text-white hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-700] = "isActive === true"  [class.font-bold] = "isActive === true">
+                        Activé
+                        </label>
+                    </div>
+                
+                    <div class="capitalize text-center flex items-center">
+                        <input
+                            type="radio"
+                            name="statut"
+                            class="sr-only"
+                            id="inactif"
+                            [checked]="isActive === false"
+                            (change)="changeIsActive(false)"
+                        />
+                        <label
+                        for="inactif"
+                        class="w-full bg-blue-400 hover:bg-blue-700 text-white hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-700] = "isActive === false"  [class.font-bold] = "isActive === false">
+                        Desactivé
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Envoyer" class="px-2 py-3 bg-green-500 hover:bg-green-700 rounded-md text-white self-end">
+        </form>
+    </div>
+    <span class="bi bi-x-lg shadow hover:shadow-md hover:shadow-white shadow-white text-white text-lg absolute top-10 right-10" (click)="closeForm()"></span>
+</div>
+
+<div *ngIf="editOpen" class="w-screen h-screen fixed top-0 left-0 bg-black/70 flex flex-col justify-center items-center overflow-auto">
+    <div class="p-6 rounded-md shadow-md shadow-gray-300 bg-white">
+        <p class="text-xl mb-5">Modifiez le service <span>{{dataToEdit ? dataToEdit.nom : ''}}</span></p>
+        <form [formGroup]="editForm" (ngSubmit)="onEdit()" class="grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-2">
+            <div class="pt-2 mb-2 relative">
+                <input
+                  type="text"
+                  id="code"
+                  formControlName="code"
+                  class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+                  placeholder=" "
+                />
+                <label
+                  for="code"
+                  class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                >
+                  Code
+                </label>
+            </div>
+
+            <div class="pt-2 mb-2 relative">
+                <input
+                  type="text"
+                  id="nom"
+                  formControlName="nom"
+                  class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+                  placeholder=" "
+                />
+                <label
+                  for="nom"
+                  class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                >
+                  Nom
+                </label>
+            </div>
+            
+            <div class="mb-2 row-span-3 max-md:row-span-2 max-md:col-span-2 max-sm:col-span-1 flex flex-col gap-2">
+                <div class="w-52 max-md:w-full h-40 bg-gray-200 rounded-md border-2 border-gray-300 flex-grow">
+                    <img *ngIf="imageUrl" [src]="imageUrl" alt="service" class="w-full h-full object-cover" crossorigin="anonymous">
+                </div>
+                <label for="image" class="w-full flex flex-col">
+                    <input type="file" id="image"
+                    formControlName="image" class="sr-only" (change)="onFileChange($event)">
+                    <span class="w-full px-3 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-sm text-center">Parcourir</span>
+                </label>
+            </div>
+            
+            <div class="pt-2 mb-2 relative col-span-2 max-sm:col-span-1">
+                <textarea
+                  id="description"
+                  formControlName="description"
+                  class="w-full h-32 resize-none border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 focus:ring-0 focus:translate-y-[-6px] peer"
+                  placeholder=" "
+                ></textarea>
+                <label
+                  for="description"
+                  class="absolute peer-placeholder-shown:top-1/4 top-0 left-0 -translate-y-3 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                >
+                Description
+                </label>
+            </div>
+
+            <div class="col-span-2 max-md:col-span-1 flex flex-col gap-2">
+                <p class="text-sm text-gray-500">Statut</p>
+                <div class="grid grid-cols-2 gap-2">
+                                      
+                    <div class="capitalize text-center flex items-center">
+                        <input
+                        type="radio"
+                        name="statut"
+                        class="sr-only"
+                        id="actif"
+                        [checked]="isActive === true"
+                        (change)="changeIsActive(true)"
+                        />
+                        <label
+                        for="actif"
+                        class="w-full bg-blue-400 hover:bg-blue-700 text-white hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-700] = "isActive === true"  [class.font-bold] = "isActive === true">
+                        Activé
+                        </label>
+                    </div>
+                
+                    <div class="capitalize text-center flex items-center">
+                        <input
+                            type="radio"
+                            name="statut"
+                            class="sr-only"
+                            id="inactif"
+                            [checked]="isActive === false"
+                            (change)="changeIsActive(false)"
+                        />
+                        <label
+                        for="inactif"
+                        class="w-full bg-blue-400 hover:bg-blue-700 text-white hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-700] = "isActive === false"  [class.font-bold] = "isActive === false">
+                        Desactivé
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Envoyer" class="px-2 py-3 bg-green-500 hover:bg-green-700 rounded-md text-white self-end">
+        </form>
+    </div>
+    <span class="bi bi-x-lg shadow hover:shadow-md hover:shadow-white shadow-white text-white text-lg absolute top-10 right-10" (click)="closeEdit()"></span>
+</div>
+
+<div *ngIf="deleteOpen" class="w-screen h-screen fixed top-0 left-0 bg-black/70 flex flex-col justify-center items-center overflow-auto">
+    <div class="p-6 rounded-md shadow-md shadow-gray-300 bg-white">
+        <div class="w-full flex flex-row justify-start items-center text-center gap-4 mb-6">
+            <span class="bi bi-x-circle-fill text-4xl text-red-500"></span>
+            <p class="text-xl">Voulez vous vraiment supprimer ce service ??</p>
+        </div>
+        <div class="flex flex-row gap-4">
+            <span class="py-2 px-4 bg-red-500 hover:bg-red-700 text-white rounded" (click)="deleteService(true)">Oui</span>
+            <span class="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white rounded" (click)="deleteService(false)">Non</span>
+        </div>
+    </div>
+    <span class="bi bi-x-lg shadow hover:shadow-md hover:shadow-white shadow-white text-white text-lg absolute top-10 right-10" (click)="closeDelete()"></span>
+</div>
+
+<div
+  *ngFor="let errorMessage of errorMessages; let i = index"
+  class="fixed top-14 left-0 w-full transform -translate-x-0  border-l-8 backdrop-blur-md text-white px-4 py-3 shadow-lg transition-all duration-500 z-10" [class]="!errorMessages[i].error ? 'bg-green-600/20 border-green-600' : 'bg-red-600/20 border-red-600'"
+  [class.translate-y-[-0.8rem]]="errorMessages[i].showMessage"
+  [class.translate-y-[-8rem]]="!errorMessages[i].showMessage"
+>
+  <div class="flex items-center justify-between">
+    <span>{{ errorMessage.message }}</span>
+    <button
+      class="text-white hover:text-gray-300 focus:outline-none"
+      (click)="dismissErrorMessage(i)"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+</div>

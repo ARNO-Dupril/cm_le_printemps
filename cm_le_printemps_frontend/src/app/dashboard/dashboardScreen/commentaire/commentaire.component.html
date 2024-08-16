@@ -1,1 +1,61 @@
 <p>commentaire works!</p>
+<div class="flex justify-center items-center h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+      <form [formGroup]="commentForm">
+        <div class="pt-2 mb-6 relative">
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+            placeholder=" "
+          />
+          <label
+            for="name"
+            class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+          >
+            Nom
+          </label>
+        </div>
+
+        <div class="pt-2 mb-6 relative">
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+            placeholder=" "
+          />
+          <label
+            for="email"
+            class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+          >
+            Email
+          </label>
+        </div>
+
+        <div class="pt-2 mb-6 relative">
+          <input
+            type="text"
+            id="message"
+            formControlName="message"
+            class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+            placeholder=" "
+          />
+          <label
+            for="message"
+            class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+          >
+            Message
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition-colors"
+        >
+          Envoyer
+        </button>
+      </form>
+    </div>
+  </div>

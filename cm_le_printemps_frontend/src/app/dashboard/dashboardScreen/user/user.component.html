@@ -1,1 +1,217 @@
-<p>user works!</p>
+<section class="w-full h-full">
+    <div class="w-full p-6 flex flex-row max-md:flex-col gap-6">
+        <div class="bg-gray-50 w-96 max-md:w-full p-4 rounded-md shadow-md shadow-gray-300">
+            <div class="w-full flex flex-col mb-6">
+                <p class="text-lg font-semibold text-blue-700">
+                    Formulaire de creation d'utilisateur
+                </p>
+                <p class="text-sm italic text-gray-400">
+                    Veillez remplir ce formulaire si vous souhaitez creer un nouvel utilisateur
+                </p>
+            </div>
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="grid grid-cols-2 max-sm:grid-cols-1 gap-2">
+                <div class="pt-2 mb-2 col-span-2 relative">
+                    <input
+                      type="text"
+                      id="nom"
+                      formControlName="nom"
+                      class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="nom"
+                      class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                    >
+                      Nom
+                    </label>
+                </div>
+    
+                <div class="pt-2 mb-2 col-span-2 relative">
+                    <input
+                      type="text"
+                      id="prenom"
+                      formControlName="prenom"
+                      class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="prenom"
+                      class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                    >
+                      Prenom
+                    </label>
+                </div>
+
+                <div class="pt-2 mb-2 col-span-2 relative">
+                    <input
+                      type="email"
+                      id="email"
+                      formControlName="email"
+                      class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="email"
+                      class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                    >
+                      Email
+                    </label>
+                </div>
+
+                <div class="pt-2 mb-2 col-span-2 relative">
+                    <input
+                      type="tel"
+                      id="telephone"
+                      formControlName="telephone"
+                      class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="telephone"
+                      class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                    >
+                      Telephone
+                    </label>
+                </div>
+                
+                <div class="pt-2 mb-2 col-span-2 relative">
+                    <input
+                      type="text"
+                      id="username"
+                      formControlName="username"
+                      class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="username"
+                      class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                    >
+                      Nom d'utilisateur
+                    </label>
+                </div>
+    
+                <div class="pt-2 mb-2 col-span-2 relative">
+                    <input
+                      [type]="showPassword ? 'text' : 'password'"
+                      id="password"
+                      formControlName="password"
+                      class="w-full border-b-2 border-gray-300 focus:border-green-500 focus:outline-none px-2 py-2 focus:ring-0 focus:translate-y-[-2px] peer"
+                      placeholder=" "
+                    />
+                    <label
+                      for="password"
+                      class="absolute peer-placeholder-shown:top-1/2 top-0 left-0 -translate-y-1/2 peer-placeholder-shown:text-gray-500 text-green-500 font-medium peer-placeholder-shown:text-base text-sm duration-300 pointer-events-none peer-focus:text-green-500 peer-focus:top-0 peer-focus:text-sm"
+                    >
+                      Mot de passe
+                    </label>
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center z-50 pr-3 cursor-pointer"
+                      (click)="togglePassword()"
+                    >
+                      <span
+                        [class]="
+                          showPassword
+                            ? 'bi bi-eye-fill text-gray-500'
+                            : 'bi bi-eye-slash-fill text-gray-500'
+                        "
+                      ></span>
+                    </div>
+                </div>
+                
+                <div class="mb-2 row-span-3 max-md:row-span-2 max-md:col-span-2 max-sm:col-span-1 flex flex-col gap-2">
+                    <div class="w-full h-40 bg-gray-200 rounded-md border-2 border-gray-300 flex-grow">
+                        <img *ngIf="imageUrl" [src]="imageUrl" alt="service" class="w-full h-full object-cover">
+                    </div>
+                    <label for="profil" class="w-full flex flex-col">
+                        <input type="file" id="profil"
+                        formControlName="profil" class="sr-only" (change)="onFileChange($event)">
+                        <span class="w-full px-3 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-sm text-center">Parcourir</span>
+                    </label>
+                </div>
+    
+                <div class="col-span-1 flex flex-col gap-2">
+                    <p class="text-sm text-gray-500">Role</p>
+                    <div class="grid grid-cols-1 max-md:grid-cols-2 max-sm:grid-cols-1 gap-2">
+                                          
+                        <div class="capitalize text-center flex items-center">
+                            <input
+                            type="radio"
+                            name="role"
+                            class="sr-only"
+                            id="admin"
+                            [checked]="isAdmin === true"
+                            (change)="changeIsAdmin(true)"
+                            />
+                            <label
+                            for="admin"
+                            class="w-full bg-blue-400 hover:bg-blue-700 text-white hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-700] = "isAdmin === true"  [class.font-bold] = "isAdmin === true">
+                            Administrateur
+                            </label>
+                        </div>
+                    
+                        <div class="capitalize text-center flex items-center">
+                            <input
+                                type="radio"
+                                name="role"
+                                class="sr-only"
+                                id="user"
+                                [checked]="isAdmin === false"
+                                (change)="changeIsAdmin(false)"
+                            />
+                            <label
+                            for="user"
+                            class="w-full bg-blue-400 hover:bg-blue-700 text-white hover:text-white font-medium px-3 py-3 rounded cursor-pointer" [class.bg-blue-700] = "isAdmin === false"  [class.font-bold] = "isAdmin === false">
+                            Utilisateur
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Envoyer" class="px-2 py-3 bg-green-500 hover:bg-green-700 rounded-md text-white self-end max-sm:mt-6">
+            </form>
+        </div>
+        <div class="flex-grow max-md:w-full">
+            <p class="bg-gray-50 p-4 rounded-md shadow-md shadow-gray-300 text-lg font-semibold text-blue-700 mb-6 flex items-center justify-between">
+                Liste des utilisateur de l'application
+                <span class="size-10 rounded-full bg-blue-700 font-black text-white flex justify-center items-center text-center">{{this.service.users.length}}</span>
+            </p>
+            <div class="grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+                <div *ngFor="let user of this.service.users" class="bg-gray-50 p-2 rounded-md shadow-md shadow-gray-300 flex items-center gap-2">
+                    <div class="size-20 overflow-hidden rounded border-2 border-gray-200 bg-gray-100 shrink-0">
+                        <img src="{{user.profil ? 'http://localhost:4500/'+user.profil : ''}}" alt="" class="w-full h-full object-cover" crossorigin="anonymous">
+                    </div>
+                    <div class="flex flex-col gap-1 flex-grow">
+                        <p *ngIf="user.nom" class="flex flex-col">
+                            <span class="text-xs text-gray-400 font-semibold">Nom Complet</span>
+                            <span class="text-sm uppercase">{{user.nom ? user.nom : ''}}</span>
+                        </p>
+                        <p *ngIf="user.email || user.telephone" class="flex flex-col">
+                            <span class="text-xs text-gray-400 font-semibold">Email/Telephone</span>
+                            <span class="text-sm ">{{user.telephone ? user.telephone : user.email}}</span>
+                        </p>
+                        <p *ngIf="user.userRole != (-1)" class="flex flex-col">
+                            <span class="text-xs py-1 capitalize  rounded text-white text-center" [class] = "user.userRole == 1 ? 'bg-green-500' : 'bg-blue-500'">{{user.userRole == 1 ? "administrateur" : "utilisateur"}}</span>
+                        </p>
+                    </div>
+                    <span class="bi bi-trash-fill text-red-600"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div
+  *ngFor="let errorMessage of errorMessages; let i = index"
+  class="fixed top-14 left-0 w-full transform -translate-x-0  border-l-8 backdrop-blur-md text-white px-4 py-3 shadow-lg transition-all duration-500 z-10" [class]="!errorMessages[i].error ? 'bg-green-600/20 border-green-600' : 'bg-red-600/20 border-red-600'"
+  [class.translate-y-[-0.8rem]]="errorMessages[i].showMessage"
+  [class.translate-y-[-8rem]]="!errorMessages[i].showMessage"
+>
+  <div class="flex items-center justify-between">
+    <span>{{ errorMessage.message }}</span>
+    <button
+      class="text-white hover:text-gray-300 focus:outline-none"
+      (click)="dismissErrorMessage(i)"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+</div>

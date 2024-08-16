@@ -1,1 +1,104 @@
-<p>dashboard works!</p>
+<section class="w-screen h-screen overflow-hidden transition-all ease-in-out duration-300">
+    <div class="w-full h-full flex flex-row flex-nowrap gap-0">
+        <div class="w-72 max-md:w-16 max-sm:h-[93%] bg-blue-600 shrink-0 grow-0 flex flex-col overflow-hidden text-nowrap transition-all ease-linear duration-300" [class] = "menuVariable ? 'max-md:w-72 max-md:z-50 max-sm:fixed max-sm:left-0 max-sm:top-16 max-sm:w-full' : 'max-sm:fixed max-sm:-left-72 max-sm:top-16'">
+            <div class="w-full h-16 px-3 pb-1 overflow-hidden mb-2">
+                <div class="w-full h-full text-xl border-b border-gray-300 flex flex-row items-center gap-2">
+                    <div class="size-11 rounded-full overflow-hidden border-2 bg-white border-gray-300 shrink-0">
+                        <img src="assets/logo_simple.png" alt="admin profil" class="h-full w-full object-cover">
+                    </div>
+                    <div class=" flex flex-col justify-center ">
+                        <span class="text-white font-semibold capitalize">cabinet medical</span>
+                        <span class="font-black text-green-200">Le PRINTEMPS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="px-3 shrink grow text-white font-semibold">
+                <ul>
+                    <li class="group p-2 h-12 mb-2 flex items-center rounded hover:bg-white hover:text-blue-600 transition-all ease-in-out duration-100 hover:shadow hover:shadow-gray-200" [class]="router.isActive('/dashboard/'+ id +'/acceuil', true) ? 'shadow-none bg-white text-blue-600' : ''">
+                        <a [routerLink]="['/dashboard', id, 'acceuil']" class="w-full h-full flex items-baseline gap-4 group-hover:gap-6 max-md:gap-6 flex-nowrap transition-all ease-in-out duration-300" (click) = "closeMenu()">
+                            <span class="bi bi-graph-up-arrow text-xl"></span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="group p-2 h-12 mb-2 flex items-center rounded hover:bg-white hover:text-blue-600 transition-all ease-in-out duration-100 hover:shadow hover:shadow-gray-200" [class]="router.isActive('/dashboard/'+ id +'/service', false) ? 'shadow-none bg-white text-blue-600' : ''">
+                        <a [routerLink]="['/dashboard', id, 'service']" class="w-full h-full flex items-baseline gap-4 group-hover:gap-6 max-md:gap-6 flex-nowrap transition-all ease-in-out duration-300" (click) = "closeMenu()">
+                            <span class="bi bi-briefcase-fill text-xl"></span>
+                            Services
+                        </a>
+                    </li>
+                    <li class="group p-2 h-12 mb-2 flex items-center rounded hover:bg-white hover:text-blue-600 transition-all ease-in-out duration-100 hover:shadow hover:shadow-gray-200" [class]="router.isActive('/dashboard/'+ id +'/demande', false) ? 'shadow-none bg-white text-blue-600' : ''">
+                        <a [routerLink]="['/dashboard', id, 'demande']" class="w-full h-full flex items-baseline gap-4 group-hover:gap-6 max-md:gap-6 flex-nowrap transition-all ease-in-out duration-300" (click) = "closeMenu()">
+                            <span class="bi bi-hourglass-split text-xl"></span>
+                            Demandes
+                        </a>
+                    </li>
+                    <li class="group p-2 h-12 mb-2 flex items-center rounded hover:bg-white hover:text-blue-600 transition-all ease-in-out duration-100 hover:shadow hover:shadow-gray-200" [class]="router.isActive('/dashboard/'+ id +'/rdv', false) ? 'shadow-none bg-white text-blue-600' : ''">
+                        <a [routerLink]="['/dashboard', id, 'rdv']" class="w-full h-full flex items-baseline gap-4 group-hover:gap-6 max-md:gap-6 flex-nowrap transition-all ease-in-out duration-300" (click) = "closeMenu()">
+                            <span class="bi bi-bookmark-fill text-xl"></span>
+                            Rendez-vous
+                        </a>
+                    </li>
+                    <li class="group p-2 h-12 mb-2 flex items-center rounded hover:bg-white hover:text-blue-600 transition-all ease-in-out duration-100 hover:shadow hover:shadow-gray-200" [class]="router.isActive('/dashboard/'+ id +'/divers', false) ? 'shadow-none bg-white text-blue-600' : ''">
+                        <a [routerLink]="['/dashboard', id, 'divers']" class="w-full h-full flex items-baseline gap-4 group-hover:gap-6 max-md:gap-6 flex-nowrap transition-all ease-in-out duration-300" (click) = "closeMenu()">
+                            <span class="bi bi-newspaper text-xl"></span>
+                            Contact & Newsletter
+                        </a>
+                    </li>
+                    <li class="group p-2 h-12 mb-2 flex items-center rounded hover:bg-white hover:text-blue-600 transition-all ease-in-out duration-100 hover:shadow hover:shadow-gray-200" [class]="router.isActive('/dashboard/'+ id +'/commentaires', false) ? 'shadow-none bg-white text-blue-600' : ''">
+                        <a [routerLink]="['/dashboard', id, 'commentaires']" class="w-full h-full flex items-baseline gap-4 group-hover:gap-6 max-md:gap-6 flex-nowrap transition-all ease-in-out duration-300" (click) = "closeMenu()">
+                            <span class="bi bi-chat-square-text-fill text-xl"></span>
+                            Commentaires
+                        </a>
+                    </li>
+                    <li class="group p-2 h-12 mb-2 flex items-center rounded hover:bg-white hover:text-blue-600 transition-all ease-in-out duration-100 hover:shadow hover:shadow-gray-200" [class]="router.isActive('/dashboard/'+ id +'/users', false) ? 'shadow-none bg-white text-blue-600' : ''">
+                        <a [routerLink]="['/dashboard', id, 'users']" class="w-full h-full flex items-baseline gap-4 group-hover:gap-6 max-md:gap-6 flex-nowrap transition-all ease-in-out duration-300" (click) = "closeMenu()">
+                            <span class="bi bi-people-fill text-xl"></span>
+                            Utilisateurs
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="px-3 text-white font-semibold">
+                <ul>
+                    <li class="group p-2 h-12 mb-2 flex items-center rounded hover:bg-red-600 hover:text-white transition-all ease-in-out duration-300 hover:shadow hover:shadow-red-200 text-red-400" >
+                        <a class="w-full h-full flex items-baseline gap-4 group-hover:gap-6 max-md:gap-6 flex-nowrap transition-all ease-in-out duration-300" (click) = "onDisconnect()" (click) = "closeMenu()">
+                            <span class="bi bi-box-arrow-left text-xl"></span>
+                            Se deconnecter
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="shrink grow flex flex-col">
+            <div class="bg-blue-600 h-14 w-full px-6 border-b-8 border-green-600 flex flex-row justify-between items-center text-white">
+                <span class="bi bi-list text-xl" (click)="openMenu()"></span>
+                <div class="flex items-center gap-2 h-full">
+                    <div class="size-11 rounded-full overflow-hidden border-2 bg-white border-gray-300">
+                        <img src="assets/logo_simple.png" alt="admin profil" class="h-full w-full object-cover">
+                    </div>
+                    <div class="h-11 w-28 flex justify-center flex-col max-md:hidden">
+                        <span class="font-semibold">John Doe</span>
+                        <span class="italic text-sm text-gray-200">Administrateur</span>
+                    </div>
+                </div>
+            </div>
+            <main class="w-full p-2 flex h-[90%] flex-col grow">
+                <div class="h-full w-full overflow-y-auto">
+                  <router-outlet/>
+                </div>
+            </main>
+        </div>
+    </div>
+</section>
+<div *ngIf = "disconnect" class="w-screen h-screen fixed top-0 left-0 bg-black/90 flex justify-center items-center text-white text-center">
+    <div class="w-80 p-6 border-2 border-gray-300 rounded flex flex-col gap-4">
+        <div class="flex items-center">
+            <span class="bi bi-info-circle-fill text-4xl"></span>
+            <span class="font-medium">Voulez vous vraiment vous deconnecter ?</span>
+        </div>
+        <div class="flex justify-between">
+            <a [routerLink]="['/']" class="px-6 py-2 bg-red-800 hover:bg-red-900 cursor-auto rounded">Oui</a>
+            <span class="px-6 py-2 bg-blue-800 hover:bg-blue-900 cursor-auto rounded" (click) = "onDisconnect()">Non</span>
+        </div>
+    </div>
+</div>

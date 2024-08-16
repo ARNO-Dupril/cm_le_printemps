@@ -1,4 +1,4 @@
-<app-navbar/>
+<app-navbar *ngIf="!isDashboard"/>
 <section class="min-h-screen">
     <router-outlet/>
 </section>
@@ -54,4 +54,4 @@
     <div class="col-span-1 row-span-1 w-[25%]">Div 5</div>
 </div> -->
 
-<app-footer/>
+<app-footer *ngIf="!isDashboard"/>

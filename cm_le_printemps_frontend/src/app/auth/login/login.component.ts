@@ -25,6 +25,9 @@ interface ErrorMessage {
 export class LoginComponent implements OnInit {
   password = '';
   showPassword = false;
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
   loginForm: FormGroup;
   errorMessages: ErrorMessage[] = [];
 
@@ -36,9 +39,6 @@ export class LoginComponent implements OnInit {
     // this.show();
   }
 
-  togglePassword() {
-    this.showPassword = !this.showPassword;
-  }
 
   onSubmit() {
     this.errorMessages = [];
@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit {
     } else {
       // Traiter le formulaire valide ici
       try {
-        console.log('Form submitted:', this.loginForm.value);
         const { email, password } = this.loginForm.value;
         this.loginService
         .login(email, password)
@@ -61,15 +60,9 @@ export class LoginComponent implements OnInit {
           if (response.success) {
             // Stocker le jeton d'authentification dans le stockage local ou les cookies
             localStorage.setItem('token', response.token);
-            console.log('====================================');
             const token = localStorage.getItem('token') as string;
             this.loginService.userIsAuth = true;
             this.loginService.userToken = token;
-            console.log({
-              userIsAuth: this.loginService.userIsAuth,
-              token: this.loginService.userToken
-            });
-            console.log('====================================');
             // Rediriger l'utilisateur vers la page d'accueil ou une page protégée
             this.router.navigate(['/']);
           } else {

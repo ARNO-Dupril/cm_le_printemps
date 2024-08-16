@@ -11,19 +11,20 @@
         <div class="h-full max-sm:h-screen w-2/3 max-sm:w-full overflow-hidden rounded">
             <img src="assets/images/84f797a529cdd39e369543d2dd6beb88.png" alt="image formulaire de rendez-vous" class="w-full h-full object-cover object-left-bottom max-sm:object-center max-sm:object-cover">
         </div>
-        <form class="p-12 max-md:px-6 absolute max-sm:h-auto mr-12 max-sm:top-0 right-0 h-5/6 w-2/3 max-sm:w-80 rounded border-2 border-blue-600 bg-blue-600/30 backdrop-blur-lg">
+        <form [formGroup]="rdvForm" (ngSubmit)="createRdv()" class="p-12 max-md:px-6 absolute max-sm:h-auto mr-12 max-sm:top-0 right-0 h-5/6 w-2/3 max-sm:w-80 rounded border-2 border-blue-600 bg-blue-600/30 backdrop-blur-lg">
             <p class="text-white text-lg font-bold col-span-4 text-center mb-6">
                 Veillez remplir ce formulaire pour prendre un Rendez-vous avec notre Equipe
             </p>
             <div class="w-full h-full grid grid-cols-4 max-sm:grid-cols-2 gap-3 content-start text-sm">
 
-                <input type="text" placeholder="Nom du patient" class="text-gray-100 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2">
+                <input type="text" formControlName = "nom" placeholder="Nom du patient" class="text-gray-100 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2">
 
-                <input type="text" placeholder="Prenom du patient" class="text-gray-200 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2">
+                <input type="text" formControlName = "prenom" placeholder="Prenom du patient" class="text-gray-200 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2">
 
                 <div class="capitalize text-center flex items-center">
                     <input
                     type="radio"
+                    formControlName = "age"
                     name="age"
                     class="sr-only"
                     id="bebe"
@@ -40,6 +41,7 @@
                 <div class="capitalize text-center flex items-center">
                     <input
                         type="radio"
+                        formControlName = "age"
                         name="age"
                         class="sr-only"
                         id="enfant"
@@ -56,6 +58,7 @@
                 <div class="capitalize text-center flex items-center">
                     <input
                         type="radio"
+                        formControlName = "age"
                         name="age"
                         class="sr-only"
                         id="adolescent"
@@ -72,6 +75,7 @@
                 <div class="capitalize text-center flex items-center">
                     <input
                         type="radio"
+                        formControlName = "age"
                         name="age"
                         class="sr-only"
                         id="adulte"
@@ -86,22 +90,20 @@
                 </div>
 
                 <div class="relative inline-block col-span-2 rounded overflow-x-hidden">
-                    <select
+                    <select  formControlName = "serviceId"
                       class="appearance-none bg-blue-600/30 border-b border-gray-300 py-3 px-4 pr-8 w-full focus:outline-none focus:border-blue-500 text-white"
-                      [(ngModel)]="selectedService" [ngModelOptions]="{standalone: true}">
+                      >
                       <option value="" disabled  class="text-gray-200 text-lg italic">
-                        <div class="w-full">
-                          Veillez selectionner un service
-                        </div> 
+                        selectionnez un service
                       </option>
                       <option
-                        *ngFor="let service of services"
+                        *ngFor="let service of this.service.services"
                         [value]="service._id"
                         class="py-3 text-lg"
                       >
-                        <div class="w-full py-3 text-blue-600 bg-red-500 hover:text-white hover:bg-blue-600">
-                          {{ service.label }}
-                        </div> 
+                        <!-- <div class="w-full py-3 text-blue-600 bg-red-500 hover:text-white hover:bg-blue-600"> -->
+                          {{ service.nom }}
+                        <!-- </div>  -->
                       </option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
@@ -110,6 +112,7 @@
                 <div class="capitalize text-center flex items-center">
                   <input
                   type="radio"
+                  formControlName = "sexe"
                   name="sexe"
                   class="sr-only"
                   id="masculin"
@@ -126,6 +129,7 @@
                 <div class="capitalize text-center flex items-center">
                   <input
                       type="radio"
+                      formControlName = "sexe"
                       name="sexe"
                       class="sr-only"
                       id="feminin"
@@ -139,9 +143,9 @@
                   </label>
                 </div>
 
-                <textarea type="text" placeholder="Description des symptomes" class="text-gray-100 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2 row-span-2 resize-none" rows="5"></textarea>
+                <textarea type="text" formControlName = "description" placeholder="Description des symptomes" class="text-gray-100 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2 row-span-2 resize-none" rows="5"></textarea>
 
-                <input type="date" placeholder="Date du rendez-vous" class="text-gray-100 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2 self-start" [min]="today" [(ngModel)]="selectedDate"  [ngModelOptions]="{standalone: true}">
+                <input type="date" formControlName = "date" placeholder="Date du rendez-vous" class="text-gray-100 px-6 py-3 bg-blue-600/30 border-b-2 border-gray-300 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:border-blue-600 focus:outline-none rounded col-span-2 self-start" [min]="today" [value]="today">
                 <br>
                 <input type="submit" placeholder="date du rendez-vous" class="appearance-none  text-gray-100 py-3 bg-green-600 hover:bg-transparent hover:backdrop-blur-md border-2 border-green-600 placeholder:text-gray-200 placeholder:text-xs hover:border-blue-600 focus:outline-none rounded col-span-1 self-end">
             </div>
@@ -199,3 +203,21 @@
     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
   </div> -->
 </section>
+
+
+<div
+  *ngFor="let errorMessage of errorMessages; let i = index"
+  class="fixed top-14 left-0 w-full transform -translate-x-0  border-l-8 backdrop-blur-md text-white px-4 py-3 shadow-lg transition-all duration-500 z-10" [class]="!errorMessages[i].error ? 'bg-green-600/20 border-green-600' : 'bg-red-600/20 border-red-600'"
+  [class.translate-y-[-0.8rem]]="errorMessages[i].showMessage"
+  [class.translate-y-[-8rem]]="!errorMessages[i].showMessage"
+>
+  <div class="flex items-center justify-between">
+    <span>{{ errorMessage.message }}</span>
+    <button
+      class="text-white hover:text-gray-300 focus:outline-none"
+      (click)="dismissErrorMessage(i)"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+</div>

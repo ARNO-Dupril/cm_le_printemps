@@ -27,6 +27,5 @@ export class NavbarComponent {
 
   closeMenu():void{
     this.menuVariable ? this.openMenu() : null;
-    
   }
 }

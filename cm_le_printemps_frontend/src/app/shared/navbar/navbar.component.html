@@ -50,7 +50,7 @@
 
                     <ul *ngIf="authService.userRole == 1" class="flex flex-row gap-0 justify-start text-white text-sm max-sm:bg-blue-600/30 max-sm:pt-6 max-sm:h-1/4 max-sm:px-6">
                         <li class="group text-white">
-                            <a [routerLink]="['/dashboard/', authService.userId]" routerLinkActive="bg-transparent font-bold text-blue-600" class="bg-blue-600 border-2 group-hover:bg-transparent group-hover:text-blue-600 rounded-sm rounded-l-none px-3 py-2 border-blue-600" (click)="closeMenu()">signup</a>
+                            <a [routerLink]="['/dashboard/', authService.userId]" routerLinkActive="bg-transparent font-bold text-blue-600" target="_blank" class="bg-blue-600 border-2 group-hover:bg-transparent group-hover:text-blue-600 rounded-sm rounded-l-none px-3 py-2 border-blue-600" (click)="closeMenu()">dashboard</a>
                         </li>
                     </ul>
                 </div>

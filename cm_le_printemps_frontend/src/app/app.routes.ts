@@ -18,7 +18,8 @@ import { CommentaireComponent } from './dashboard/dashboardScreen/commentaire/co
 export const routes: Routes = [
     {
         path: "",
-        component: HomeComponent
+        component: HomeComponent,
+        outlet: "primary"
     },
     {
         path: "about",
@@ -77,11 +78,11 @@ export const routes: Routes = [
                 path: "commentaires",
                 component: CommentaireComponent
             }
-        ],
-        outlet: "primary"
+        ]
     },
     {
         path: "**",
         component: NotfoundComponent
     }
 ];
+

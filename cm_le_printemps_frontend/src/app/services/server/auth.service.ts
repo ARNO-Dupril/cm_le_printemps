@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from "@auth0/angular-jwt";
 import { environment } from '../../../environments/environment';
+import { UserServicesService } from '../user-services.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
   public username: string = "";
   public userId: string = "";
 
-  constructor(){}
+  constructor(private user: UserServicesService){}
 
   async login(email: string, password: string): Promise<any> {
     return await fetch(`${environment.apiUrl}/login`, {
@@ -54,12 +55,18 @@ export class AuthService {
     const token = localStorage.getItem('token');
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       this.userIsAuth = true;
+      // this.user.user.IsAuth = true;
       this.userToken = token
+      // this.user.user.Token = token;
       const decodedToken = this.jwtHelper.decodeToken(token);
       this.userId = decodedToken._id;
+      // this.user.user.Id = decodedToken._id;
       this.userRole = decodedToken.role;
+      // this.user.user.Role = decodedToken.role;
       this.userEmail = decodedToken.email;
+      // this.user.user.Email = decodedToken.email;
       this.username = decodedToken.username;
+      // this.user.user.name = decodedToken.username;
     } else {
       this.userIsAuth = false;
       this.userId = "";
@@ -67,10 +74,9 @@ export class AuthService {
       this.userEmail = "";
       this.username = "";
     }
-    console.log('====================================');
-    console.log({"token": localStorage.getItem('token'), "username": this.username});
-    console.log('====================================');
+    // console.log('====================================');
+    // console.log({"token": localStorage.getItem('token'), "username": this.username, "role": this.userRole});
+    // console.log('====================================');
   }
-
 
 }
