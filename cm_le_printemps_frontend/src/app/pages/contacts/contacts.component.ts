@@ -96,7 +96,6 @@ export class ContactsComponent implements OnInit {
     console.log("bonjour");
       // Traiter le formulaire valide ici
       try {
-        console.log('Form submitted:', this.rdvForm.value);
         const formData  = {
           nom: this.rdvForm.get('nom')?.value,
           prenom: this.rdvForm.get('prenom')?.value,
