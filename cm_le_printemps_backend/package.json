@@ -7,7 +7,7 @@
   "scripts": {
     "start": "src/server.js",
     "dev": "nodemon src/server.js",
-    "build": "npm install && npm install --prefix ../cm_le_printemps_frontend && npm build --prefix ../cm_le_printemps_frontend",
+    "build": "npm install",
     "test": "start"
   },
   "keywords": [
