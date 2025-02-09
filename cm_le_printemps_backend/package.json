@@ -5,7 +5,7 @@
   "description": "API backend du site du cabinet medical le printemps qui me permettra de gerer les differentes operations a effectuer sur le site en ce qui concerne les prises de rendez-vous en ligne",
   "main": "src/server.js",
   "scripts": {
-    "start": "src/server.js",
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "build": "npm install",
     "test": "start"
